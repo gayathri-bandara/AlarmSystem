@@ -3,480 +3,432 @@
 @{
     ViewData["Title"] = "CLARITY FAULT-DOCKETS";
 
-    var customerTypes = (ViewBag.CustomerTypes as List<string>) ?? new List<string>();
-    var workGroups = (ViewBag.WorkGroups as List<string>) ?? new List<string>();
+    var customerTypes  = (ViewBag.CustomerTypes  as List<string>) ?? new List<string>();
+    var workGroups     = (ViewBag.WorkGroups     as List<string>) ?? new List<string>();
 
-    string selectedCustomer = ViewBag.SelectedCustomerType ?? "~ALL~";
-    string selectedWorkGroup = ViewBag.SelectedWorkGroup ?? "~ALL~";
+    string selectedCustomer  = ViewBag.SelectedCustomerType ?? "~ALL~";
+    string selectedWorkGroup = ViewBag.SelectedWorkGroup    ?? "~ALL~";
 
-    var totalDockets = Model.Count;
-    var slaExceeded = Model.Count(x => x.SLAExceeded);
+    // ── KPI values ──────────────────────────────────────────
+    var totalDockets   = Model.Count;
+    var slaExceeded    = Model.Count(x => x.SLAExceeded);
     var workGroupCount = Model.Select(x => x.WORK_GROUP).Distinct().Count();
-    var pendingWO = Model.Sum(x => x.WO_COUNT);
+    var pendingWO      = Model.Sum(x => x.WO_COUNT);
+    var breachPct      = totalDockets > 0
+                            ? (int)Math.Round((double)slaExceeded / totalDockets * 100)
+                            : 0;
 
-    var defaultSummaryWgs = new List<string> { "CEN-CSC-DATA", "CEN-CSC-NW", "CEN-CSC-CC", "CEN-CSC-MS" };
-    var otherWgs = Model.Select(x => x.WORK_GROUP).Where(w => !string.IsNullOrWhiteSpace(w) && !defaultSummaryWgs.Contains(w)).Distinct().OrderBy(w => w);
+    // ── Summary-table modal data ─────────────────────────────
+    var defaultSummaryWgs = new List<string>
+        { "CEN-CSC-DATA", "CEN-CSC-NW", "CEN-CSC-CC", "CEN-CSC-MS" };
+    var otherWgs = Model
+        .Select(x => x.WORK_GROUP)
+        .Where(w => !string.IsNullOrWhiteSpace(w) && !defaultSummaryWgs.Contains(w))
+        .Distinct()
+        .OrderBy(w => w);
     var summaryWorkGroups = defaultSummaryWgs.Concat(otherWgs).ToList();
 
-    int totalLess4 = 0;
-    int total4to24 = 0;
-    int total24to72 = 0;
-    int totalMore72 = 0;
-    int grandTotalSummary = 0;
-
+    int totalLess4 = 0, total4to24 = 0, total24to72 = 0, totalMore72 = 0, grandTotalSummary = 0;
     int zeroWoCount = Model.Count(x => x.WO_COUNT == 0);
-    int oneWoCount = Model.Count(x => x.WO_COUNT == 1);
+    int oneWoCount  = Model.Count(x => x.WO_COUNT == 1);
+
+    // ── Helpers (local functions) ────────────────────────────
+    string CusTypeCss(string t)
+    {
+        if (string.IsNullOrEmpty(t)) return "fd-ctype-default";
+        string tl = t.ToLower();
+        if (tl.Contains("enterprise")) return "fd-ctype-enterprise";
+        if (tl.Contains("government")) return "fd-ctype-government";
+        if (tl.Contains("small"))      return "fd-ctype-smallbiz";
+        if (tl.Contains("health"))     return "fd-ctype-healthcare";
+        if (tl.Contains("wholesale"))  return "fd-ctype-wholesale";
+        return "fd-ctype-default";
+    }
+
+    string WoBadgeCss(int count)
+        => count == 0 ? "fd-wo-zero" : count >= 3 ? "fd-wo-high" : "fd-wo-mid";
+
+    string FormatCusTypeLabel(string t)
+        => t == "~ALL~" ? "Customer Type: All types" : "Customer Type: " + t;
+
+    string FormatWgLabel(string w)
+        => w == "~ALL~" ? "Work Group: All work groups" : "Work Group: " + w;
 }
 
-@section Styles
-{
-    <link rel="stylesheet"
-          href="~/css/fault-dockets.css"
-          asp-append-version="true" />
+@section Styles {
+    <link rel="stylesheet" href="~/css/fault-dockets.css" asp-append-version="true" />
 }
 
-<div class="fault-page">
+<div class="fd-page">
 
-    <!-- HERO -->
+    @* ══════════════════════════════════════════════════════
+       TITLE ROW  –  left: title / subtitle   right: filters
+       ══════════════════════════════════════════════════════ *@
+    <div class="fd-title-row">
 
-    <div class="fault-hero">
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-
-            <div class="hero-left">
-
-                <div class="hero-icon">
-
-                    <i class="fas fa-network-wired"></i>
-
-                </div>
-
-                <div>
-
-                    <h1>Clarity Fault Dockets</h1>
-
-                    <p>
-                        Customer Fault Monitoring & SLA Dashboard
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="hero-search">
-
-                <i class="fas fa-search"></i>
-
-                <input id="searchInput"
-                       type="text"
-                       placeholder="Search Customer / CIR / Reference..." />
-
-            </div>
-
+        <div class="fd-title-left">
+            <h1>Clarity Fault Dockets</h1>
+            <p>Customer fault monitoring &amp; SLA tracking</p>
         </div>
 
-    </div>
+        <form class="fd-filter-form" method="get" asp-action="Index">
+            <select name="customerType" class="fd-filter-select" onchange="this.form.submit()">
+                @foreach (var item in customerTypes)
+                {
+                    <option value="@item" selected="@(item == selectedCustomer)">
+                        @FormatCusTypeLabel(item)
+                    </option>
+                }
+            </select>
 
-    <!-- SUMMARY -->
-
-    <div class="summary-grid">
-
-        <div class="summary-card blue">
-
-            <div class="summary-icon">
-
-                <i class="fas fa-ticket-alt"></i>
-
-            </div>
-
-            <div>
-
-                <h2>@totalDockets</h2>
-
-                <span>Total Dockets</span>
-
-            </div>
-
-        </div>
-
-        <div class="summary-card red">
-
-            <div class="summary-icon">
-
-                <i class="fas fa-exclamation-triangle"></i>
-
-            </div>
-
-            <div>
-
-                <h2>@slaExceeded</h2>
-
-                <span>SLA Exceeded</span>
-
-            </div>
-
-        </div>
-
-        <div class="summary-card green">
-
-            <div class="summary-icon">
-
-                <i class="fas fa-users"></i>
-
-            </div>
-
-            <div>
-
-                <h2>@workGroupCount</h2>
-
-                <span>Work Groups</span>
-
-            </div>
-
-        </div>
-
-        <div class="summary-card orange">
-
-            <div class="summary-icon">
-
-                <i class="fas fa-clipboard-list"></i>
-
-            </div>
-
-            <div>
-
-                <h2>@pendingWO</h2>
-
-                <span>Pending WO</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- FILTER PANEL -->
-
-    <div class="filter-panel">
-
-        <form method="get" asp-action="Index">
-
-            <div class="filter-grid">
-
-                <div class="filter-box">
-
-                    <label>Select Type</label>
-
-                    <select name="customerType"
-                            class="form-select"
-                            onchange="this.form.submit()">
-
-                        @foreach (var item in customerTypes)
-                        {
-                            if (item == selectedCustomer)
-                            {
-                                <option selected>@item</option>
-                            }
-                            else
-                            {
-                                <option>@item</option>
-                            }
-                        }
-
-                    </select>
-
-                </div>
-
-                <div class="filter-box">
-
-                    <label>Select Work Group</label>
-
-                    <select name="workGroup"
-                            class="form-select"
-                            onchange="this.form.submit()">
-
-                        @foreach (var item in workGroups)
-                        {
-                            if (item == selectedWorkGroup)
-                            {
-                                <option selected>@item</option>
-                            }
-                            else
-                            {
-                                <option>@item</option>
-                            }
-                        }
-
-                    </select>
-
-                </div>
-
-            </div>
-
+            <select name="workGroup" class="fd-filter-select" onchange="this.form.submit()">
+                @foreach (var item in workGroups)
+                {
+                    <option value="@item" selected="@(item == selectedWorkGroup)">
+                        @FormatWgLabel(item)
+                    </option>
+                }
+            </select>
         </form>
 
     </div>
 
-    <!-- PART 2 CONTINUES BELOW -->
+    @* ══════════════════════════════════════════════════════
+       FOUR KPI CARDS
+       ══════════════════════════════════════════════════════ *@
+    <div class="fd-kpi-grid">
 
-        <!-- ACTION BUTTONS -->
+        @* Total Dockets – blue *@
+        <div class="fd-kpi-card fd-kpi-blue">
+            <div class="fd-kpi-card-top">
+                <span class="fd-kpi-label">Total Dockets</span>
+                <span class="fd-kpi-icon"><i class="fas fa-ticket-alt"></i></span>
+            </div>
+            <div class="fd-kpi-bottom">
+                <span class="fd-kpi-value">@totalDockets</span>
+            </div>
+        </div>
 
-    <div class="action-panel">
+        @* SLA Exceeded – red *@
+        <div class="fd-kpi-card fd-kpi-red">
+            <div class="fd-kpi-card-top">
+                <span class="fd-kpi-label">SLA Exceeded</span>
+                <span class="fd-kpi-icon"><i class="fas fa-exclamation-triangle"></i></span>
+            </div>
+            <div class="fd-kpi-bottom">
+                <span class="fd-kpi-value">@slaExceeded</span>
+                @if (totalDockets > 0)
+                {
+                    <span class="fd-kpi-badge">@breachPct% Breach</span>
+                }
+            </div>
+        </div>
 
-        <button type="button"
-                class="action-btn teal"
-                data-bs-toggle="modal"
-                data-bs-target="#summaryTableModal">
+        @* Work Groups – green *@
+        <div class="fd-kpi-card fd-kpi-green">
+            <div class="fd-kpi-card-top">
+                <span class="fd-kpi-label">Work Groups</span>
+                <span class="fd-kpi-icon"><i class="fas fa-users"></i></span>
+            </div>
+            <div class="fd-kpi-bottom">
+                <span class="fd-kpi-value">@workGroupCount</span>
+                <span class="fd-kpi-badge">Active</span>
+            </div>
+        </div>
 
-            <i class="fas fa-table"></i>
-
-            Summary Table
-
-        </button>
-
-        <a asp-controller="FaultDockets"
-           asp-action="SummaryDashboard"
-           asp-route-customerType="@selectedCustomer"
-           asp-route-workGroup="@selectedWorkGroup"
-           class="action-btn cyan">
-
-            <i class="fas fa-chart-pie"></i>
-
-            Summary Dashboard
-
-        </a>
-
-        <a asp-controller="WorkOrders"
-           asp-action="Index"
-           class="action-btn blue">
-
-            <i class="fas fa-clipboard-list"></i>
-
-            Work Orders
-
-        </a>
-
-        <a asp-controller="Events"
-           asp-action="Index"
-           class="action-btn purple">
-
-            <i class="fas fa-calendar-alt"></i>
-
-            Events
-
-        </a>
-
-        <a asp-controller="EventNew"
-           asp-action="Index"
-           class="action-btn orange">
-
-            <i class="fas fa-calendar-plus"></i>
-
-            Events New
-
-        </a>
-
-        <a asp-controller="CarrierBusinessSummary"
-           asp-action="Index"
-           class="action-btn indigo">
-
-            <i class="fas fa-chart-line"></i>
-
-            Carrier Business Summary
-
-        </a>
-
-        <a asp-controller="FaultDockets"
-           asp-action="Export"
-           class="action-btn green">
-
-            <i class="fas fa-file-excel"></i>
-
-            Export Excel
-
-        </a>
+        @* Pending Work Orders – amber *@
+        <div class="fd-kpi-card fd-kpi-amber">
+            <div class="fd-kpi-card-top">
+                <span class="fd-kpi-label">Pending Work Orders</span>
+                <span class="fd-kpi-icon"><i class="fas fa-clipboard-list"></i></span>
+            </div>
+            <div class="fd-kpi-bottom">
+                <span class="fd-kpi-value">@pendingWO</span>
+            </div>
+        </div>
 
     </div>
 
-    <!-- TABLE -->
+    @* ══════════════════════════════════════════════════════
+       VIEW SUMMARY DASHBOARD  –  right-aligned
+       ══════════════════════════════════════════════════════ *@
+    <div class="fd-view-summary-row">
+        <a asp-controller="FaultDockets" asp-action="Insights" class="fd-btn-insights">
+            <i class="fas fa-chart-line"></i>
+            View Summary Dashboard
+        </a>
+    </div>
 
-    <div class="table-card">
+    @* ══════════════════════════════════════════════════════
+       ACTION TOOLBAR
+       ══════════════════════════════════════════════════════ *@
+    <div class="fd-action-bar">
 
-        <div class="table-header">
+        <div class="fd-action-left">
 
-            <div>
+            @* Summary Table – opens modal *@
+            <button type="button"
+                    class="fd-btn-sumtable"
+                    data-bs-toggle="modal"
+                    data-bs-target="#summaryTableModal">
+                <i class="fas fa-table"></i>
+                Summary Table
+            </button>
 
-                <h3>Customer Fault Dockets</h3>
-
-                <p>Real-time customer fault monitoring</p>
-
-            </div>
-
-        </div>
-
-        <div class="table-responsive">
-
-            <table class="table premium-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>REF</th>
-                        <th>CUSTOMER</th>
-                        <th>CUSTOMER NAME</th>
-                        <th>CIR NAME</th>
-                        <th>CIR TYPE</th>
-                        <th>REPORTED</th>
-                        <th>HOURS</th>
-                        <th>SLA</th>
-                        <th>ACCESS</th>
-                        <th>PENDING WO</th>
-                        <th>WORK GROUP</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="faultTable">
-
-@foreach (var item in Model)
-{
-    <tr>
-
-        <td>
-
-            <a asp-controller="FaultDetails"
-               asp-action="Details"
-               asp-route-id="@item.CLARITY_REF">
-
-                @item.CLARITY_REF
-
+            @* Work Orders *@
+            <a asp-controller="WorkOrders"
+               asp-action="Index"
+               class="fd-btn-workorders">
+                <i class="fas fa-clipboard-list"></i>
+                Work Orders
+                <span class="fd-wo-count-pill">@pendingWO</span>
             </a>
 
-        </td>
+            @* More Options dropdown *@
+            <div class="dropdown">
+                <button type="button"
+                        class="fd-btn-moreopts dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    More Options
+                    <i class="fas fa-chevron-down" style="font-size:11px; margin-left:2px;"></i>
+                </button>
+                <ul class="dropdown-menu fd-dropdown-menu">
+                    <li>
+                        <a class="dropdown-item"
+                           asp-controller="Events"
+                           asp-action="Index">
+                            <i class="fas fa-calendar-alt" style="color:#9333ea; width:16px;"></i>
+                            Events
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                           asp-controller="EventNew"
+                           asp-action="Index">
+                            <span class="d-flex align-items-center gap-2">
+                                <i class="fas fa-calendar-plus" style="color:#d97706; width:16px;"></i>
+                                Events New
+                            </span>
+                            <span class="badge" style="background:#fef3c7; color:#92400e; font-size:10px; border-radius:20px; padding:2px 7px;">NEW</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item"
+                           asp-controller="CarrierBusinessSummary"
+                           asp-action="Index">
+                            <i class="fas fa-chart-line" style="color:#0d9488; width:16px;"></i>
+                            Carrier Business Summary
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-        <td>
+        </div>
 
-            @item.CUS_TYPE
+        @* Export Excel – right side *@
+        <a asp-controller="FaultDockets"
+           asp-action="Export"
+           class="fd-btn-export">
+            <i class="fas fa-file-excel"></i>
+            Export Excel
+        </a>
 
-        </td>
+    </div>
 
-        <td>
+    @* ══════════════════════════════════════════════════════
+       CUSTOMER FAULT DOCKETS TABLE
+       ══════════════════════════════════════════════════════ *@
+    <div class="fd-table-card">
 
-            @item.CUS_NAME
+        @* Table header row *@
+        <div class="fd-table-top">
+            <h2>Customer Fault Dockets</h2>
+            <div class="fd-search-wrap">
+                <i class="fas fa-search fd-search-icon"></i>
+                <input type="text"
+                       id="fdSearch"
+                       placeholder="Search customer, circuit or reference..."
+                       autocomplete="off" />
+            </div>
+        </div>
 
-        </td>
+        @* Scrollable table *@
+        <div class="table-responsive">
+            <table class="fd-table">
+                <thead>
+                    <tr>
+                        <th style="width:44px;"></th>
+                        <th>Reference</th>
+                        <th>Customer</th>
+                        <th>Circuit</th>
+                        <th>Work Group</th>
+                        <th>SLA</th>
+                        <th class="fd-th-center">Pending WO</th>
+                    </tr>
+                </thead>
+                <tbody id="fdTableBody">
 
-        <td>
+                    @{int rowIdx = 0;}
+                    @foreach (var item in Model)
+                    {
+                        string searchText = $"{item.CLARITY_REF} {item.CUS_NAME} {item.CIR_NAME}".ToLower();
+                        string cusCss     = CusTypeCss(item.CUS_TYPE);
+                        string woCss      = WoBadgeCss(item.WO_COUNT);
+                        string reportedStr = item.REPORTED.HasValue
+                                                ? item.REPORTED.Value.ToString("dd MMM yyyy HH:mm")
+                                                : "—";
+                        int idx = rowIdx;
 
-            @item.CIR_NAME
+                        @* ── Main row ─────────────────────────────────── *@
+                        <tr class="fd-main-row"
+                            data-row-idx="@idx"
+                            data-search-text="@searchText">
 
-        </td>
+                            <td class="text-center">
+                                <button type="button"
+                                        class="fd-expand-btn"
+                                        data-idx="@idx"
+                                        onclick="fdToggle(@idx)"
+                                        title="Expand details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </td>
 
-        <td>
+                            <td>
+                                <a asp-controller="FaultDetails"
+                                   asp-action="Details"
+                                   asp-route-id="@item.CLARITY_REF"
+                                   class="fd-ref-link">@item.CLARITY_REF</a>
+                            </td>
 
-            @item.CIR_TYPE
+                            <td>
+                                <div class="fd-cus-name">@item.CUS_NAME</div>
+                                <span class="fd-ctype @cusCss">@item.CUS_TYPE</span>
+                            </td>
 
-        </td>
+                            <td class="fd-circuit">@item.CIR_NAME</td>
 
-        <td>
+                            <td>
+                                <span class="fd-wg-pill">@item.WORK_GROUP</span>
+                            </td>
 
-            @item.REPORTED
+                            <td>
+                                @if (item.SLAExceeded)
+                                {
+                                    <span class="fd-sla-exceeded">
+                                        <span class="fd-sla-dot"></span>Exceeded
+                                    </span>
+                                }
+                                else if (item.SLA.Contains("24 x 7") || item.SLA.Contains("24x7"))
+                                {
+                                    <span class="fd-sla-sla">24 &times; 7 SLA</span>
+                                }
+                                else
+                                {
+                                    <span class="fd-sla-ok">
+                                        <span class="fd-sla-dot"></span>Within SLA
+                                    </span>
+                                }
+                            </td>
 
-        </td>
+                            <td class="text-center">
+                                <span class="fd-wo-badge @woCss">@item.WO_COUNT</span>
+                            </td>
 
-        <td>
+                        </tr>
 
-            @item.HOURS
+                        @* ── Detail / expanded row ────────────────────── *@
+                        <tr class="fd-detail-row" id="fd-detail-@idx" style="display:none;">
+                            <td></td>
+                            <td colspan="6">
+                                <div class="fd-detail-content">
+                                    <span>
+                                        <span class="fd-detail-label">Circuit Type:</span>
+                                        @(string.IsNullOrWhiteSpace(item.CIR_TYPE) ? "—" : item.CIR_TYPE)
+                                    </span>
+                                    <span class="fd-detail-sep">|</span>
+                                    <span>
+                                        <span class="fd-detail-label">Reported:</span>
+                                        @reportedStr
+                                    </span>
+                                    <span class="fd-detail-sep">|</span>
+                                    <span>
+                                        <span class="fd-detail-label">Elapsed:</span>
+                                        @item.HOURS hrs
+                                    </span>
+                                    <span class="fd-detail-sep">|</span>
+                                    <span>
+                                        <span class="fd-detail-label">Access Medium:</span>
+                                        @(string.IsNullOrWhiteSpace(item.ACCESS_MEDIUM) ? "—" : item.ACCESS_MEDIUM)
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
 
-        </td>
-
-        <td>
-
-            @if(item.SLAExceeded)
-            {
-                <span class="badge bg-danger">
-
-                    SLA Exceeded
-
-                </span>
-            }
-            else
-            {
-                <span class="badge bg-success">
-
-                    @item.SLA
-
-                </span>
-            }
-
-        </td>
-
-        <td>
-
-            @item.ACCESS_MEDIUM
-
-        </td>
-
-        <td>
-
-            @item.WO_COUNT
-
-        </td>
-
-        <td>
-
-            @item.WORK_GROUP
-
-        </td>
-
-    </tr>
-}
+                        rowIdx++;
+                    }
 
                 </tbody>
-
             </table>
+        </div>
 
+        @* Pagination footer *@
+        <div class="fd-pagination">
+            <span id="fdFooterText">
+                Showing <strong>1–@Math.Min(10, Model.Count)</strong>
+                of <strong>@Model.Count</strong> records
+            </span>
+            <div id="fdPaginationControls"></div>
         </div>
 
     </div>
 
-</div>
+</div><!-- /.fd-page -->
 
-<!-- SUMMARY TABLE MODAL -->
-<div class="modal fade" id="summaryTableModal" tabindex="-1" aria-labelledby="summaryTableModalLabel" aria-hidden="true">
+
+@* ════════════════════════════════════════════════════════════
+   SUMMARY TABLE MODAL  (unchanged from original)
+   ════════════════════════════════════════════════════════════ *@
+<div class="modal fade" id="summaryTableModal" tabindex="-1"
+     aria-labelledby="summaryTableModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+        <div class="modal-content border-0 shadow-lg"
+             style="border-radius:20px; overflow:hidden;">
 
-            <div class="modal-header text-white" style="background: linear-gradient(135deg, #0f3d75, #1565c0); padding: 20px 25px;">
+            <div class="modal-header text-white"
+                 style="background:linear-gradient(135deg,#0f3d75,#1565c0); padding:20px 25px;">
                 <div>
                     <h5 class="modal-title fw-bold" id="summaryTableModalLabel">
-                        <i class="fas fa-table me-2"></i> Summary Table (Fault Duration & Work Group)
+                        <i class="fas fa-table me-2"></i>
+                        Summary Table (Fault Duration &amp; Work Group)
                     </h5>
-                    <small class="text-white-50">Real-time breakdown based on age (fault duration) & Work Group</small>
+                    <small class="text-white-50">
+                        Real-time breakdown based on age (fault duration) &amp; Work Group
+                    </small>
                 </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="modal-body p-4" style="background: #f8fafc;">
+            <div class="modal-body p-4" style="background:#f8fafc;">
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h6 class="fw-bold m-0 text-dark">
-                        <i class="fas fa-list-check text-primary me-2"></i> Summary table based on age (fault duration) & WG
+                        <i class="fas fa-list-check text-primary me-2"></i>
+                        Summary table based on age (fault duration) &amp; WG
                     </h6>
                 </div>
 
                 <div class="table-responsive rounded-3 shadow-sm mb-4">
                     <table class="table table-bordered table-hover mb-0 text-center align-middle bg-white">
-                        <thead class="text-white" style="background: linear-gradient(135deg, #0f4c81, #1976d2);">
+                        <thead class="text-white"
+                               style="background:linear-gradient(135deg,#0f4c81,#1976d2);">
                             <tr>
                                 <th class="text-start ps-3">Work Group</th>
                                 <th>&lt;4 Hours</th>
-                                <th>4 to 24Hours</th>
-                                <th>24hour to 72hours</th>
+                                <th>4 to 24 Hours</th>
+                                <th>24 hr to 72 hrs</th>
                                 <th>&gt;3 days</th>
                                 <th class="bg-dark text-white">Total</th>
                             </tr>
@@ -484,22 +436,22 @@
                         <tbody>
                             @foreach (var wg in summaryWorkGroups)
                             {
-                                var cLess4 = Model.Count(x => x.WORK_GROUP == wg && x.HOURS < 4);
-                                var c4to24 = Model.Count(x => x.WORK_GROUP == wg && x.HOURS >= 4 && x.HOURS <= 24);
+                                var cLess4  = Model.Count(x => x.WORK_GROUP == wg && x.HOURS < 4);
+                                var c4to24  = Model.Count(x => x.WORK_GROUP == wg && x.HOURS >= 4 && x.HOURS <= 24);
                                 var c24to72 = Model.Count(x => x.WORK_GROUP == wg && x.HOURS > 24 && x.HOURS <= 72);
                                 var cMore72 = Model.Count(x => x.WORK_GROUP == wg && x.HOURS > 72);
                                 var rowTotal = cLess4 + c4to24 + c24to72 + cMore72;
 
-                                totalLess4 += cLess4;
-                                total4to24 += c4to24;
-                                total24to72 += c24to72;
-                                totalMore72 += cMore72;
+                                totalLess4        += cLess4;
+                                total4to24        += c4to24;
+                                total24to72       += c24to72;
+                                totalMore72       += cMore72;
                                 grandTotalSummary += rowTotal;
 
                                 <tr>
                                     <td class="text-start ps-3 fw-bold text-dark">@wg</td>
-                                    <td>@(cLess4 > 0 ? cLess4.ToString() : "0")</td>
-                                    <td>@(c4to24 > 0 ? c4to24.ToString() : "0")</td>
+                                    <td>@(cLess4  > 0 ? cLess4.ToString()  : "0")</td>
+                                    <td>@(c4to24  > 0 ? c4to24.ToString()  : "0")</td>
                                     <td>@(c24to72 > 0 ? c24to72.ToString() : "0")</td>
                                     <td>@(cMore72 > 0 ? cMore72.ToString() : "0")</td>
                                     <td class="fw-bold bg-light text-primary">@rowTotal</td>
@@ -508,7 +460,7 @@
                         </tbody>
                         <tfoot class="fw-bold bg-light border-top">
                             <tr>
-                                <td class="text-start ps-3 text-uppercase font-weight-bold">Total</td>
+                                <td class="text-start ps-3 text-uppercase">Total</td>
                                 <td class="text-primary fs-6">@totalLess4</td>
                                 <td class="text-primary fs-6">@total4to24</td>
                                 <td class="text-primary fs-6">@total24to72</td>
@@ -523,20 +475,15 @@
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100 border-start border-danger border-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-dark fs-6">Zero WO Count</span>
-                                </div>
+                                <span class="fw-bold text-dark fs-6">Zero WO Count</span>
                                 <span class="badge bg-danger rounded-pill px-3 py-2 fs-6">@zeroWoCount</span>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-6">
                         <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100 border-start border-warning border-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="fw-bold text-dark fs-6">One WO without HQ Team Count</span>
-                                </div>
+                                <span class="fw-bold text-dark fs-6">One WO without HQ Team Count</span>
                                 <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fs-6">@oneWoCount</span>
                             </div>
                         </div>
@@ -546,7 +493,9 @@
             </div>
 
             <div class="modal-footer bg-light border-0">
-                <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">
+                <button type="button"
+                        class="btn btn-secondary px-4 rounded-pill"
+                        data-bs-dismiss="modal">
                     <i class="fas fa-times me-1"></i> Close
                 </button>
             </div>
@@ -555,37 +504,185 @@
     </div>
 </div>
 
-@section Scripts
-{
+
+@section Scripts {
 <script>
+(function () {
+    'use strict';
 
-document.addEventListener("DOMContentLoaded", function(){
+    // ── Config ───────────────────────────────────────────────
+    var PER_PAGE = 10;
+    var page     = 1;
+    var visible  = [];   // row indices that match current search
 
-    const input = document.getElementById("searchInput");
+    // ── DOM refs ─────────────────────────────────────────────
+    var searchEl    = document.getElementById('fdSearch');
+    var tbody       = document.getElementById('fdTableBody');
+    var footerEl    = document.getElementById('fdFooterText');
+    var paginationEl = document.getElementById('fdPaginationControls');
 
-    const table = document.getElementById("faultTable");
+    // ── Helpers ──────────────────────────────────────────────
+    function mainRows() {
+        return Array.from(tbody.querySelectorAll('tr.fd-main-row'));
+    }
 
-    if(!input || !table)
-        return;
+    function detailRow(idx) {
+        return document.getElementById('fd-detail-' + idx);
+    }
 
-    input.addEventListener("keyup", function(){
+    // ── Filter ───────────────────────────────────────────────
+    function applyFilter() {
+        var q = (searchEl.value || '').trim().toLowerCase();
+        visible = [];
 
-        const value = this.value.toLowerCase();
+        mainRows().forEach(function (tr) {
+            var idx  = parseInt(tr.dataset.rowIdx, 10);
+            var text = (tr.dataset.searchText || '').toLowerCase();
+            var match = !q || text.indexOf(q) !== -1;
 
-        const rows = table.getElementsByTagName("tr");
+            if (match) {
+                visible.push(idx);
+            } else {
+                // hide non-matching immediately
+                tr.style.display = 'none';
+                var dr = detailRow(idx);
+                if (dr) dr.style.display = 'none';
+                // collapse its toggle icon
+                var btn = tr.querySelector('.fd-expand-btn');
+                if (btn) {
+                    btn.classList.remove('is-expanded');
+                    var ico = btn.querySelector('i');
+                    if (ico) ico.className = 'fas fa-chevron-down';
+                }
+            }
+        });
 
-        for(let i=0;i<rows.length;i++){
+        page = 1;
+        applyPage();
+    }
 
-            rows[i].style.display =
-                rows[i].innerText.toLowerCase().includes(value)
-                    ? ""
-                    : "none";
+    // ── Pagination render ────────────────────────────────────
+    function applyPage() {
+        var start    = (page - 1) * PER_PAGE;
+        var end      = start + PER_PAGE;
+        var pageSet  = {};
+        visible.slice(start, end).forEach(function (idx) { pageSet[idx] = true; });
+        var visibleSet = {};
+        visible.forEach(function (idx) { visibleSet[idx] = true; });
 
+        mainRows().forEach(function (tr) {
+            var idx = parseInt(tr.dataset.rowIdx, 10);
+            if (!visibleSet[idx]) return; // already hidden by applyFilter
+
+            var inPage = !!pageSet[idx];
+            tr.style.display = inPage ? '' : 'none';
+
+            if (!inPage) {
+                // hide detail row and collapse when pushed off page
+                var dr  = detailRow(idx);
+                var btn = tr.querySelector('.fd-expand-btn');
+                if (dr) dr.style.display = 'none';
+                if (btn) {
+                    btn.classList.remove('is-expanded');
+                    var ico = btn.querySelector('i');
+                    if (ico) ico.className = 'fas fa-chevron-down';
+                }
+            }
+        });
+
+        renderFooter(start, Math.min(end, visible.length), visible.length);
+        renderPagination();
+    }
+
+    // ── Footer text ──────────────────────────────────────────
+    function renderFooter(start, end, total) {
+        if (!footerEl) return;
+        if (total === 0) {
+            footerEl.innerHTML = 'No matching records';
+        } else {
+            footerEl.innerHTML =
+                'Showing <strong>' + (start + 1) + '\u2013' + end + '</strong>' +
+                ' of <strong>' + total + '</strong> records';
         }
+    }
 
-    });
+    // ── Page number range ────────────────────────────────────
+    function pageRange(curr, total) {
+        if (total <= 7) {
+            var r = [];
+            for (var i = 1; i <= total; i++) r.push(i);
+            return r;
+        }
+        if (curr <= 4)         return [1, 2, 3, 4, 5, '...', total];
+        if (curr >= total - 3) return [1, '...', total - 4, total - 3, total - 2, total - 1, total];
+        return [1, '...', curr - 1, curr, curr + 1, '...', total];
+    }
 
-});
+    // ── Pagination buttons ───────────────────────────────────
+    function renderPagination() {
+        if (!paginationEl) return;
+        var totalPages = Math.max(1, Math.ceil(visible.length / PER_PAGE));
+        var html = '';
 
+        // Prev
+        html += '<button class="fd-page-btn"' +
+            (page === 1 ? ' disabled' : ' onclick="fdSetPage(' + (page - 1) + ')"') + '>' +
+            '<i class="fas fa-chevron-left" style="font-size:11px;"></i></button>';
+
+        // Page numbers
+        pageRange(page, totalPages).forEach(function (p) {
+            if (p === '...') {
+                html += '<button class="fd-page-btn" disabled>\u2026</button>';
+            } else {
+                html += '<button class="fd-page-btn' + (p === page ? ' active' : '') + '"' +
+                    ' onclick="fdSetPage(' + p + ')">' + p + '</button>';
+            }
+        });
+
+        // Next
+        html += '<button class="fd-page-btn"' +
+            (page === totalPages ? ' disabled' : ' onclick="fdSetPage(' + (page + 1) + ')"') + '>' +
+            '<i class="fas fa-chevron-right" style="font-size:11px;"></i></button>';
+
+        paginationEl.innerHTML = html;
+    }
+
+    // ── Public: set page ─────────────────────────────────────
+    window.fdSetPage = function (p) {
+        var totalPages = Math.max(1, Math.ceil(visible.length / PER_PAGE));
+        page = Math.max(1, Math.min(p, totalPages));
+        applyPage();
+        // scroll table into view
+        var card = document.querySelector('.fd-table-card');
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    // ── Public: expand / collapse detail row ─────────────────
+    window.fdToggle = function (idx) {
+        var dr  = detailRow(idx);
+        var btn = document.querySelector('.fd-expand-btn[data-idx="' + idx + '"]');
+        if (!dr) return;
+
+        var isExpanded = dr.style.display === 'table-row';
+        if (isExpanded) {
+            dr.style.display = 'none';
+            if (btn) {
+                btn.classList.remove('is-expanded');
+                btn.querySelector('i').className = 'fas fa-chevron-down';
+            }
+        } else {
+            dr.style.display = 'table-row';
+            if (btn) {
+                btn.classList.add('is-expanded');
+                btn.querySelector('i').className = 'fas fa-chevron-up';
+            }
+        }
+    };
+
+    // ── Init ─────────────────────────────────────────────────
+    if (searchEl) searchEl.addEventListener('input', applyFilter);
+    applyFilter(); // builds visible[], renders page 1 and pagination
+
+})();
 </script>
 }
