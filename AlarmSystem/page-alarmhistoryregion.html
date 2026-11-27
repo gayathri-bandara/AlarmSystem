@@ -1,0 +1,33 @@
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at AlarmSystem.Services.AlarmHistoryRegionService.GetPlatformsAsync() in C:\Users\dwrja\Desktop\AlarmSystem\AlarmSystem-Decompress\AlarmSystem\Services\AlarmHistoryRegionService.cs:line 41
+   at AlarmSystem.Controllers.AlarmHistoryRegionController.Index(Nullable`1 from, Nullable`1 to, String platform, String region) in C:\Users\dwrja\Desktop\AlarmSystem\AlarmSystem-Decompress\AlarmSystem\Controllers\AlarmHistoryRegionController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_5>d.MoveNext() in C:\Users\dwrja\Desktop\AlarmSystem\AlarmSystem-Decompress\AlarmSystem\Program.cs:line 193
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:fd855021-0751-4983-b304-b787e44abd6d
+Error Number:-2,State:0,Class:11
+
+HEADERS
+=======
+Accept: */*
+Host: localhost:5250
+User-Agent: curl/8.21.0
+Cookie: .AspNetCore.Antiforgery.paWYo-FDtTE=CfDJ8KmLwu4XQfFOm5wXanIHuUP-kCR0MfctlUCt-pRB-s1x0KGdV49yzIsmFT0ZpZJvhut0BgQa9C-cyeNoP97NTECw8BKys3eLAswN-rSLXlEGL7crxye31QZNCJyGp1dl4zwLxTEZMsy6pCk7I0LUbm0; .AspNetCore.Cookies=CfDJ8KmLwu4XQfFOm5wXanIHuUMUDXlv7sXJPvqFuSCEGNBEh8FiBepzRDkr0xH_tC0URQjzSNaM3q5AQxuIEwxCNTuardadt2a6r7xo-O0rJMP8ybjfS7sUHUS4HnyhxW5UgtTjzDCy-mN6r2Dh-WdWZw9dONEuwPZmJZTJ9tJSh-dhg8Mv4-C8_wAgRWbgXOWtwbo9UC_mLPA3Bbl23nxRfH2W3mPFvoC0rHNVNgREHglcU_yMaszkLQj9WJVb2zRF8T4z_a1Sy3t2VJV8pNrflvnikfA6M5HJmxyBbryHdKKUNdhvZ_skwaX_pSEhiQhLQtNHHo23HX91UPc-k6ebWWvTRiBKx4pw3nJ-o2g72bK6OAygS_J2Q0IyjWH8ES25HskQPri8CadctB-5EyLNaWv-uLWjwkAPuWrePh5XGY7qXKGL9wmxG6RqDEofcqNXP3x6E92vBXpVddVDZIrCa-nykLboi1a72DC0-2eYKl6Bu8UsC8TsCB2M9qk4pIKcHZzYQviV67AN-nV0im2EDBjlyxWlJ3hNXHMCD9aNcJaztyalac28ZKaDxW4RBind24l_U5Pe7cC5fZbpGZBpXKqOnuIvg0ADe2-VCo9VhM3RvV-yi6HS8BDzH228SgN4Ou2R8Zz97NAHGvcXPl6QxM_7nUDRB5ebksyTSwuCjIWEUGz6aV_nl6AbT9VCyLlohAfa3ZR73l2cJHsvoy0WKYo

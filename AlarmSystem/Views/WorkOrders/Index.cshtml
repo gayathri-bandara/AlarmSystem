@@ -1,0 +1,196 @@
+@model List<AlarmSystem.Models.WorkOrder>
+
+@{
+    ViewData["Title"] = "WORK ORDERS";
+
+    string selected = ViewBag.WorkGroup;
+    List<string> groups = ViewBag.Groups;
+}
+
+@section Styles {
+    <style>
+        .work-orders-table-wrap {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #dfe7f1;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, .07);
+        }
+
+        .work-orders-table {
+            min-width: 980px;
+            margin: 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            color: #172033;
+        }
+
+        .work-orders-table thead th {
+            padding: 18px 16px;
+            color: #fff;
+            background: #123b76;
+            border: 0;
+            border-right: 1px solid rgba(255,255,255,.09);
+            font-size: .82rem;
+            font-weight: 800;
+            letter-spacing: .035em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .work-orders-table thead th:nth-child(even) {
+            background: #0c2e61;
+        }
+
+        .work-orders-table thead th:first-child { border-top-left-radius: 11px; }
+        .work-orders-table thead th:last-child {
+            border-right: 0;
+            border-top-right-radius: 11px;
+        }
+
+        .work-orders-table tbody td {
+            padding: 22px 16px;
+            vertical-align: middle;
+            background: #fff;
+            border: 0;
+            border-bottom: 1px solid #e8eef5;
+            font-size: .94rem;
+            line-height: 1.55;
+        }
+
+        .work-orders-table tbody tr:last-child td { border-bottom: 0; }
+        .work-orders-table tbody tr:hover td { background: #f7faff; }
+        .work-orders-table .wo-ref-link {
+            color: #0876f9;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .work-orders-table .wo-ref-link:hover { text-decoration: underline; }
+        .work-orders-table .wo-status-badge {
+            display: inline-block;
+            max-width: 220px;
+            padding: 7px 14px;
+            color: #fff;
+            background: #168a5b;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .work-orders-table .wo-status-badge.is-assigned { background: #168a5b; }
+        .work-orders-table .wo-status-badge.is-in-progress { background: #e83248; }
+        .work-orders-table .wo-status-badge.is-closed { background: #f59e0b; }
+        .work-orders-table .wo-hours {
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+    </style>
+}
+
+<div class="d-flex align-items-center gap-3 mb-3">
+    <a asp-controller="FaultDockets"
+       asp-action="Index"
+       class="btn btn-outline-secondary"
+       onclick="if (document.referrer && new URL(document.referrer).origin === window.location.origin) { window.history.back(); return false; }">
+        <i class="fas fa-arrow-left me-1" aria-hidden="true"></i>
+        Back
+    </a>
+    <h2 class="mb-0">WORK ORDERS</h2>
+</div>
+
+<div class="mb-3">
+    <a asp-controller="WorkOrders"
+       asp-action="Index"
+       asp-route-workGroup="CEN-CSC-DATA"
+       class="btn btn-outline-primary me-2">
+        CEN-CSC-DATA
+    </a>
+
+    <a asp-controller="WorkOrders"
+       asp-action="Index"
+       asp-route-workGroup="CEN-CSC-NW"
+       class="btn btn-outline-primary me-2">
+        CEN-CSC-NW
+    </a>
+
+    <a asp-controller="WorkOrders"
+       asp-action="Index"
+       asp-route-workGroup="CEN-CSC-CC"
+       class="btn btn-outline-primary me-2">
+        CEN-CSC-CC
+    </a>
+
+    <a asp-controller="WorkOrders"
+       asp-action="Index"
+       asp-route-workGroup="CEN-CSC-MS"
+       class="btn btn-outline-primary me-2">
+        CEN-CSC-MS
+    </a>
+
+    <a asp-controller="WorkGroups"
+       asp-action="Index"
+       class="btn btn-primary">
+        WORK-GROUPS
+    </a>
+</div>
+
+<div class="mb-3">
+    <a asp-controller="WorkOrders"
+       asp-action="Index"
+       asp-route-workGroup="@selected"
+       class="btn btn-success">
+        REFRESH
+    </a>
+</div>
+
+<div class="table-responsive work-orders-table-wrap">
+    <table class="table work-orders-table">
+        <thead>
+            <tr>
+                <th>REF</th>
+                <th>CIRCUIT</th>
+                <th>CUSTOMER</th>
+                <th>WORK ORDER</th>
+                <th>STATUS</th>
+                <th>PENDING HRS</th>
+                <th>WORK GROUP</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                var status = item.WO_STATUS ?? "";
+                var normalizedStatus = status.ToLowerInvariant();
+                var statusClass = normalizedStatus.Contains("closed")
+                    ? "is-closed"
+                    : normalizedStatus.Contains("inprogress") || normalizedStatus.Contains("in progress")
+                        ? "is-in-progress"
+                        : normalizedStatus.Contains("assigned")
+                            ? "is-assigned"
+                            : "";
+                <tr>
+                    <td>
+                        <a asp-controller="FaultDockets"
+                           asp-action="Details"
+                           asp-route-id="@item.CLARITY_REF"
+                           class="wo-ref-link">
+                            @item.CLARITY_REF
+                        </a>
+                    </td>
+                    <td>@item.CIRCUIT</td>
+                    <td>@item.CUSTOMER</td>
+                    <td>@item.WORK_ORDER</td>
+                    <td>
+                        <span class="wo-status-badge @statusClass">
+                            @(string.IsNullOrWhiteSpace(status) ? "Status unavailable" : status)
+                        </span>
+                    </td>
+                    <td class="wo-hours">@item.PENDING_HRS</td>
+                    <td>@item.WORKGROUP</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

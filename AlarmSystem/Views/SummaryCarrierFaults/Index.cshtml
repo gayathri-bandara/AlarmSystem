@@ -1,0 +1,269 @@
+@model AlarmSystem.ViewModels.SummaryCarrierFaultViewModel
+
+@{
+    ViewData["Title"] = "Carrier Customer Faults Summary";
+}
+
+<style>
+
+.container-fluid{
+    padding:20px;
+}
+
+.page-title{
+    text-align:center;
+    color:darkblue;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.summary-table{
+    width:40%;
+    margin-bottom:20px;
+}
+
+.summary-table th{
+    background:#3a4f63;
+    color:white;
+    text-align:center;
+}
+
+.summary-table td{
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #000;
+}
+
+.main-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+.main-table th,
+.main-table td{
+    border:1px solid black;
+    padding:6px;
+    text-align:center;
+}
+
+.group-area{
+    background:#6c757d;
+    color:white;
+}
+
+.group-cea{
+    background:#0d6efd;
+    color:white;
+}
+
+.group-msan{
+    background:#198754;
+    color:white;
+}
+
+.group-slbn{
+    background:#dc3545;
+    color:white;
+}
+
+/* --- Glossary / Terminology --- */
+.glossary-card{
+    background:#f8f9fa;
+    border:1px solid #dee2e6;
+    border-radius:8px;
+    padding:14px 16px;
+    margin-top:20px;
+}
+
+.glossary-section{
+    margin-bottom:10px;
+}
+
+.glossary-section:last-child{
+    margin-bottom:0;
+}
+
+.glossary-heading{
+    font-size:12px;
+    font-weight:700;
+    color:#6c757d;
+    text-transform:uppercase;
+    letter-spacing:0.3px;
+    display:block;
+    margin-bottom:6px;
+}
+
+.glossary-item{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    padding:3px 0;
+}
+
+.glossary-term{
+    font-weight:700;
+    font-size:13px;
+    color:#0B1D36;
+    min-width:60px;
+    flex-shrink:0;
+}
+
+.glossary-term-cea{  color:#0d6efd; }
+.glossary-term-msan{ color:#198754; }
+.glossary-term-slbn{ color:#dc3545; }
+
+.glossary-def{
+    font-size:13px;
+    color:#495057;
+    line-height:1.4;
+}
+
+</style>
+
+<div class="container-fluid">
+
+<h2 class="page-title">
+    CARRIER CUSTOMER FAULTS SUMMARY
+</h2>
+
+<table class="table table-bordered summary-table">
+
+<tr>
+    <th>CEA</th>
+    <th>MSAN</th>
+    <th>SLBN</th>
+</tr>
+
+<tr>
+    <td>@Model.Summary.CEA</td>
+    <td>@Model.Summary.MSAN</td>
+    <td>@Model.Summary.SLBN</td>
+</tr>
+
+</table>
+
+<a asp-action="Export"
+   class="btn btn-primary mb-3">
+    Export To Excel
+</a>
+
+<a asp-action="SummaryDashboard"
+   class="btn btn-success mb-3 ms-2">
+    Summary Dashboard
+</a>
+
+<table class="main-table">
+
+<thead>
+
+<tr>
+
+<th colspan="2" class="group-area">AREA</th>
+
+<th colspan="4" class="group-cea">CEA</th>
+
+<th colspan="4" class="group-msan">MSAN</th>
+
+<th colspan="4" class="group-slbn">SLBN</th>
+
+</tr>
+
+<tr>
+
+<th>REGION</th>
+<th>PROVINCE</th>
+
+<th>LT1D</th>
+<th>1D-3D</th>
+<th>3D-7D</th>
+<th>GT7D</th>
+
+<th>LT1D</th>
+<th>1D-3D</th>
+<th>3D-7D</th>
+<th>GT7D</th>
+
+<th>LT1D</th>
+<th>1D-3D</th>
+<th>3D-7D</th>
+<th>GT7D</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+    @foreach (var item in Model.Details)
+{
+    <tr>
+
+        <td>@item.REGION</td>
+        <td>@item.PROVINCE</td>
+
+        <!-- CEA -->
+        <td>@item.CEA_LT1D</td>
+        <td>@item.CEA_1D_3D</td>
+        <td>@item.CEA_3D_7D</td>
+        <td>@item.CEA_GT7D</td>
+
+        <!-- MSAN -->
+        <td>@item.MSAN_LT1D</td>
+        <td>@item.MSAN_1D_3D</td>
+        <td>@item.MSAN_3D_7D</td>
+        <td>@item.MSAN_GT7D</td>
+
+        <!-- SLBN -->
+        <td>@item.SLBN_LT1D</td>
+        <td>@item.SLBN_1D_3D</td>
+        <td>@item.SLBN_3D_7D</td>
+        <td>@item.SLBN_GT7D</td>
+
+    </tr>
+}
+
+</tbody>
+
+</table>
+
+<!-- ====== GLOSSARY / TERMINOLOGY ====== -->
+<div class="glossary-card">
+    <div class="glossary-section">
+        <span class="glossary-heading">Platforms</span>
+        <div class="glossary-item">
+            <span class="glossary-term glossary-term-cea">CEA</span>
+            <span class="glossary-def">Customer Edge Access &mdash; access-layer network elements at the customer premises edge.</span>
+        </div>
+        <div class="glossary-item">
+            <span class="glossary-term glossary-term-msan">MSAN</span>
+            <span class="glossary-def">Multi-Service Access Node &mdash; converged access nodes delivering voice, data, and broadband services.</span>
+        </div>
+        <div class="glossary-item">
+            <span class="glossary-term glossary-term-slbn">SLBN</span>
+            <span class="glossary-def">SLT Backbone Node &mdash; transmission / backbone network elements carrying core network traffic.</span>
+        </div>
+    </div>
+    <div class="glossary-section">
+        <span class="glossary-heading">Age Bucket Prefixes</span>
+        <div class="glossary-item">
+            <span class="glossary-term">LT</span>
+            <span class="glossary-def">Less Than &mdash; prefix for age brackets (e.g., <strong>LT1D</strong> = Less Than 1 Day since the fault was reported).</span>
+        </div>
+        <div class="glossary-item">
+            <span class="glossary-term">GT</span>
+            <span class="glossary-def">Greater Than &mdash; prefix for age brackets (e.g., <strong>GT7D</strong> = Greater Than 7 Days since the fault was reported).</span>
+        </div>
+        <div class="glossary-item">
+            <span class="glossary-term">1D-3D</span>
+            <span class="glossary-def">Between 1 and 3 Days since the fault was reported.</span>
+        </div>
+        <div class="glossary-item">
+            <span class="glossary-term">3D-7D</span>
+            <span class="glossary-def">Between 3 and 7 Days since the fault was reported.</span>
+        </div>
+    </div>
+</div>
+<!-- ====== END GLOSSARY ====== -->
+
+</div>

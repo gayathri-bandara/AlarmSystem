@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrier Customer Faults Summary Dashboard - AlarmSystem</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=pt9pqkanF4mV0TDuxpltWRBUjRFmu5FYe4kuRfrZLAQ" />
+    <link rel="stylesheet" href="/AlarmSystem.styles.css?v=l6R0MrkDDFTLCC6oh2nQFA5134YPgJzx5GYDyv-gf2g" />
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+    
+</head>
+
+
+<body class="bg-light  has-sidebar">
+
+    <header b-z23fy4zdhm>
+        <nav b-z23fy4zdhm class="navbar navbar-expand-lg glass-nav">
+            <div b-z23fy4zdhm class="container">
+               <div b-z23fy4zdhm class="nav-left">
+
+        <button b-z23fy4zdhm id="sideMenuToggle"
+                class="btn btn-sm side-menu-toggle"
+                type="button"
+                aria-controls="mainSideMenu"
+                aria-expanded="false"
+                aria-label="Show menu"
+                title="Show menu">
+
+            <span b-z23fy4zdhm class="menu-icon">
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+            </span>
+
+        </button>
+
+    <a class="navbar-brand navbar-logo" href="/">
+
+        <img src="/img/slt-logo.svg" class="slt-logo-header" alt="SLTMobitel" />
+
+    </a>
+
+</div>
+
+<div b-z23fy4zdhm class="nav-center">
+
+    <h2 b-z23fy4zdhm class="brand-title">
+        AlarmSystem
+    </h2>
+
+    <div b-z23fy4zdhm class="brand-subtitle">
+        Network Monitoring Platform
+    </div>
+
+</div>
+
+                <button b-z23fy4zdhm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+                        aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-z23fy4zdhm class="navbar-toggler-icon"></span>
+                </button>
+
+                <div b-z23fy4zdhm class="collapse navbar-collapse" id="topNav">
+                    <ul b-z23fy4zdhm class="navbar-nav ms-auto align-items-lg-center">
+                            <li b-z23fy4zdhm class="nav-item me-3">
+                                <div b-z23fy4zdhm class="profile-card">
+                                    <div b-z23fy4zdhm class="profile-icon">
+                                        👤
+                                    </div>
+                                    <div b-z23fy4zdhm class="profile-info">
+                                        <div b-z23fy4zdhm class="profile-name">
+                                            Dev User
+                                        </div>
+                                        <div b-z23fy4zdhm class="profile-role">
+                                            Authenticated
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li b-z23fy4zdhm class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" title="Sign out of system" href="/Account/Logout">
+                                    <i b-z23fy4zdhm class="fa-solid fa-right-from-bracket"></i>
+                                    <span b-z23fy4zdhm>Logout</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-z23fy4zdhm class="app-shell with-sidebar">
+            <aside b-z23fy4zdhm id="mainSideMenu" class="side-menu" aria-label="Main menu">
+                <div b-z23fy4zdhm class="side-menu-title">Main menu</div>
+                <nav b-z23fy4zdhm class="side-menu-nav">
+                  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent "
+           href="#">
+            Dashboard
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander expanded"
+                type="button"
+                data-menu-toggle="dashboard-submenu"
+                aria-controls="dashboard-submenu"
+                aria-expanded="true">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="dashboard-submenu" class="side-submenu open">
+
+        <a class="side-sublink" href="/Home/AlarmDashboard">
+            Alarm Dashboard
+        </a>
+
+        <a class="side-sublink" href="/Home/Dashboard">
+            Other Operations
+        </a>
+
+    </div>
+
+</div>
+
+                    <div b-z23fy4zdhm class="side-link-group">
+                        <div b-z23fy4zdhm class="side-link-row">
+                            <a class="side-link side-link-parent " href="/Home/ViewData">
+                                View Data
+                            </a>
+                            <button b-z23fy4zdhm class="side-link-expander "
+                                    type="button"
+                                    data-menu-toggle="viewdata-submenu"
+                                    aria-controls="viewdata-submenu"
+                                    aria-expanded="false"
+                                    title="Toggle View Data menu">
+                                <span b-z23fy4zdhm aria-hidden="true">▾</span>
+                            </button>
+                        </div>
+
+                        <div b-z23fy4zdhm id="viewdata-submenu" class="side-submenu ">
+                            <a class="side-sublink " data-viewdata-section-key="realtime-alarms" href="/Home/RealtimeAlarm">
+                                Realtime Alarm
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-fault-oss" href="/Home/CustomerFaultOss">
+                                Customer Fault (OSS)
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-details" href="/Home/CustomerDetails">
+                                Customer Details
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="network-element-details" href="/Home/NetworkElementDetails">
+                                Network Element Details
+                            </a>
+                        </div>
+                    </div>
+
+
+
+<a class="side-link " href="/ManualEscalation">
+    Manual Escalations
+</a>
+<a class="side-link " href="/Alarm">
+    Alarms
+</a>
+
+<a class="side-link " href="/FaultDockets">
+    Fault-Dockets
+</a>
+
+<a class="side-link " href="/Inbox">
+    Inbox
+</a>
+
+<a class="side-link " href="/Views">
+    Views
+</a>
+
+
+<a class="side-link " href="/Home/ApiTester">
+    Starlink
+</a>
+
+<a class="side-link " href="/Links">
+    Links
+</a>
+
+<a class="side-link " href="/AlarmDelay">
+    Alarm Delays
+</a>
+
+<a class="side-link " href="/TroubleTicket">
+    Trouble Ticket
+</a>
+
+<a class="side-link " href="/Config">
+    Config
+</a>
+
+
+
+<div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent"
+           href="#">
+            Search
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander"
+                type="button"
+                data-menu-toggle="search-submenu"
+                aria-controls="search-submenu"
+                aria-expanded="false">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="search-submenu" class="side-submenu">
+
+        <a class="side-sublink" href="/CircuitId">
+            Search Circuit
+        </a>
+
+        <a class="side-sublink" href="/SearchByNode">
+            Search By Node Name
+        </a>
+
+    </div>
+
+</div>
+
+<a class="side-link" href="/PowerAlarm">
+    POWER ALARM
+</a>
+
+
+
+  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent" href="#">
+            Report
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander "
+                type="button"
+                data-menu-toggle="report-submenu"
+                aria-controls="report-submenu"
+                aria-expanded="false">
+            <span b-z23fy4zdhm>▾</span>
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="report-submenu" class="side-submenu ">
+
+        <a class="side-sublink" href="/TodayNodeDown">
+            Today Node Down
+        </a>
+
+        <a class="side-sublink" href="/SummaryCarrierFaults">
+            Summary Carrier Faults
+        </a>
+
+        <a class="side-sublink" href="/SummaryNetworkFaults">
+            Summary Network Faults
+        </a>
+
+        <a class="side-sublink" href="/NodeDownReport">
+            Node Down
+        </a>
+
+        <a class="side-sublink" href="/ACMainFailure">
+            AC Mains Failure
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryEngineer">
+            Alarm History Network Engineer
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryProvince">
+            Alarm History Provincewise
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryRegion">
+            Alarm History Regionwise
+        </a>
+
+        <a class="side-sublink" href="/Summary">
+            Summary
+        </a>
+
+        <a class="side-sublink" href="/Report/NodeDownReport">
+            CEA Port Report
+        </a>
+
+        <a class="side-sublink " href="/DailyEmailReport">
+            ✉ Daily Email Report
+        </a>
+
+    </div>
+
+</div>
+
+
+<a class="side-link" href="/RPBSummary">
+    RPB Summary
+</a>
+                </nav>
+            </aside>
+
+        <div b-z23fy4zdhm class="app-content">
+    <main b-z23fy4zdhm class="container-fluid py-4 px-3">
+    
+
+<style>
+
+.container-fluid{
+    padding:12px;
+}
+
+.page-title{
+    color:darkblue;
+    font-weight:bold;
+    margin:0;
+}
+
+.kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:12px 0 16px;
+}
+
+.kpi-card{
+    background:#fff;
+    border-radius:10px;
+    padding:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+    text-align:center;
+    border-top:4px solid #dee2e6;
+}
+
+.kpi-card.kpi-total{ border-top-color:#343a40; background:#f8f9fa; }
+.kpi-card.kpi-cea{ border-top-color:#0d6efd; background:#eaf2ff; }
+.kpi-card.kpi-msan{ border-top-color:#198754; background:#eaf7ef; }
+.kpi-card.kpi-slbn{ border-top-color:#dc3545; background:#fdeeee; }
+
+.kpi-card h3{
+    margin:0;
+    font-size:26px;
+    color:#0d6efd;
+}
+
+.kpi-card.kpi-total h3{ color:#343a40; }
+.kpi-card.kpi-msan h3{ color:#198754; }
+.kpi-card.kpi-slbn h3{ color:#dc3545; }
+
+.kpi-card span{
+    color:#6c757d;
+    font-weight:600;
+    font-size:13px;
+}
+
+.btn-back-summary{
+    color:#00008b;
+    border:1px solid #00008b;
+    background:#fff;
+}
+
+.btn-back-summary:hover,
+.btn-back-summary:focus,
+.btn-back-summary:active{
+    color:#fff;
+    background:#00008b;
+    border-color:#00008b;
+}
+
+.summary-table{
+    width:36%;
+    margin:0 auto 16px;
+}
+
+.summary-table th{
+    background:#3a4f63;
+    color:white;
+    text-align:center;
+}
+
+.summary-table td{
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #000;
+}
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:14px;
+    margin-bottom:18px;
+}
+
+.chart-card{
+    grid-column:span 6;
+    background:#fff;
+    border-radius:12px;
+    padding:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+}
+
+.chart-card.wide{
+    grid-column:span 12;
+}
+
+.chart-title{
+    font-weight:700;
+    color:#212529;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+.chart-box{
+    position:relative;
+    height:260px;
+}
+
+.matrix-table th,
+.matrix-table td{
+    text-align:center;
+    vertical-align:middle;
+}
+
+.matrix-table thead th{
+    color:#fff;
+}
+
+@media(max-width:992px){
+
+.kpi-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.chart-card,
+.chart-card.wide{
+    grid-column:span 12;
+}
+
+.summary-table{
+    width:70%;
+}
+
+}
+
+@media(max-width:576px){
+
+.kpi-grid{
+    grid-template-columns:1fr;
+}
+
+.summary-table{
+    width:100%;
+}
+
+}
+
+</style>
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="page-title">CARRIER CUSTOMER FAULTS SUMMARY DASHBOARD</h2>
+        <a class="btn btn-back-summary" href="/SummaryCarrierFaults">
+            &larr; Back to Summary
+        </a>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card kpi-total">
+            <h3>27</h3>
+            <span>Total Faults</span>
+        </div>
+        <div class="kpi-card kpi-cea">
+            <h3>9</h3>
+            <span>CEA</span>
+        </div>
+        <div class="kpi-card kpi-msan">
+            <h3>18</h3>
+            <span>MSAN</span>
+        </div>
+        <div class="kpi-card kpi-slbn">
+            <h3>0</h3>
+            <span>SLBN</span>
+        </div>
+    </div>
+
+    <table class="table table-bordered summary-table">
+        <tr>
+            <th>CEA</th>
+            <th>MSAN</th>
+            <th>SLBN</th>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>18</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <div class="chart-grid">
+        <div class="chart-card">
+            <div class="chart-title">Platform Distribution</div>
+            <div class="chart-box"><canvas id="platformPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Fault Age Distribution</div>
+            <div class="chart-box"><canvas id="agePieChart"></canvas></div>
+        </div>
+        <div class="chart-card wide">
+            <div class="chart-title">Faults by Platform and Age Group</div>
+            <div class="chart-box"><canvas id="platformAgeBarChart"></canvas></div>
+        </div>
+        <div class="chart-card wide">
+            <div class="chart-title">Top Regions by Fault Count</div>
+            <div class="chart-box"><canvas id="regionBarChart"></canvas></div>
+        </div>
+    </div>
+
+    <h5 class="mb-2">Faults by Platform and Age Group</h5>
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered matrix-table bg-white">
+            <thead>
+                <tr>
+                    <th class="table-dark">Age Group</th>
+                    <th class="table-primary">CEA</th>
+                    <th class="table-success">MSAN</th>
+                    <th class="table-danger">SLBN</th>
+                    <th class="table-secondary">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td class="fw-bold">&lt;1 Day</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="fw-bold">0</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">1-3 Days</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="fw-bold">0</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">3-7 Days</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td class="fw-bold">0</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">&gt;7 Days</td>
+                        <td>9</td>
+                        <td>18</td>
+                        <td>0</td>
+                        <td class="fw-bold">27</td>
+                    </tr>
+            </tbody>
+            <tfoot>
+                <tr class="fw-bold">
+                    <td>Total</td>
+                    <td>9</td>
+                    <td>18</td>
+                    <td>0</td>
+                    <td>27</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+
+</main>
+
+            <footer b-z23fy4zdhm class="border-top bg-white">
+                <div b-z23fy4zdhm class="container py-3 d-flex justify-content-between align-items-center">
+                    <span b-z23fy4zdhm class="text-muted small">&copy; 2026 - AlarmSystem</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.appApiBase = '/api';
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script src="/js/site.js?v=UaRoscdjdIu4a9ODZAPyVfPowkHQ7K5P0cMQb2LqfCY"></script>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const chartData = {"platformLabels":["CEA","MSAN","SLBN"],"platformData":[9,18,0],"ageLabels":["\u003C1 Day","1-3 Days","3-7 Days","\u003E7 Days"],"ageData":[0,0,0,27],"ceaAge":[0,0,0,9],"msanAge":[0,0,0,18],"slbnAge":[0,0,0,0],"regionLabels":["REGION 3","REGION 2","REGION 1","METRO"],"regionData":[10,8,5,4],"totalFaults":27};
+
+        if (window.Chart) {
+            const platformColors = ['#0d6efd', '#198754', '#dc3545'];
+            const ageColors = ['#0d6efd', '#ffc107', '#fd7e14', '#dc3545'];
+
+            new Chart(document.getElementById('platformPieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.platformLabels,
+                    datasets: [{
+                        data: chartData.platformData,
+                        backgroundColor: platformColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('agePieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [{
+                        data: chartData.ageData,
+                        backgroundColor: ageColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('platformAgeBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [
+                        {
+                            label: 'CEA',
+                            data: chartData.ceaAge,
+                            backgroundColor: '#0d6efd',
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'MSAN',
+                            data: chartData.msanAge,
+                            backgroundColor: '#198754',
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'SLBN',
+                            data: chartData.slbnAge,
+                            backgroundColor: '#dc3545',
+                            borderRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('regionBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.regionLabels,
+                    datasets: [{
+                        label: 'Total Faults',
+                        data: chartData.regionData,
+                        backgroundColor: '#0d6efd',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

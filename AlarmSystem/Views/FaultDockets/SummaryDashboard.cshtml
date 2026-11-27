@@ -1,0 +1,385 @@
+@model List<AlarmSystem.Models.FaultDocket>
+
+@{
+    ViewData["Title"] = "Clarity Fault Dockets Summary Dashboard";
+
+    var customerTypes = (ViewBag.CustomerTypes as List<string>) ?? new List<string>();
+    var workGroups = (ViewBag.WorkGroups as List<string>) ?? new List<string>();
+
+    string selectedCustomer = ViewBag.SelectedCustomerType ?? "~ALL~";
+    string selectedWorkGroup = ViewBag.SelectedWorkGroup ?? "~ALL~";
+
+    var totalDockets = Model.Count;
+    var slaExceeded = Model.Count(x => x.SLAExceeded);
+    var withinSla = totalDockets - slaExceeded;
+    var workGroupCount = Model.Select(x => x.WORK_GROUP).Distinct().Count();
+    var pendingWO = Model.Sum(x => x.WO_COUNT);
+    var zeroWoCount = Model.Count(x => x.WO_COUNT == 0);
+    var oneWoCount = Model.Count(x => x.WO_COUNT == 1);
+
+    var defaultSummaryWgs = new List<string> { "CEN-CSC-DATA", "CEN-CSC-NW", "CEN-CSC-CC", "CEN-CSC-MS" };
+    var otherWgs = Model.Select(x => x.WORK_GROUP).Where(w => !string.IsNullOrWhiteSpace(w) && !defaultSummaryWgs.Contains(w)).Distinct().OrderBy(w => w);
+    var summaryWorkGroups = defaultSummaryWgs.Concat(otherWgs).ToList();
+
+    var ageMatrix = summaryWorkGroups.Select(wg => new[]
+    {
+        Model.Count(x => x.WORK_GROUP == wg && x.HOURS < 4),
+        Model.Count(x => x.WORK_GROUP == wg && x.HOURS >= 4 && x.HOURS <= 24),
+        Model.Count(x => x.WORK_GROUP == wg && x.HOURS > 24 && x.HOURS <= 72),
+        Model.Count(x => x.WORK_GROUP == wg && x.HOURS > 72)
+    }).ToArray();
+
+    var totalLess4 = ageMatrix.Sum(r => r[0]);
+    var total4to24 = ageMatrix.Sum(r => r[1]);
+    var total24to72 = ageMatrix.Sum(r => r[2]);
+    var totalMore72 = ageMatrix.Sum(r => r[3]);
+    var grandTotalSummary = totalLess4 + total4to24 + total24to72 + totalMore72;
+
+    var wgTotals = summaryWorkGroups.Select(wg => Model.Count(x => x.WORK_GROUP == wg)).ToArray();
+    var slaByWg = summaryWorkGroups.Select(wg => Model.Count(x => x.WORK_GROUP == wg && x.SLAExceeded)).ToArray();
+    var pendingByWg = summaryWorkGroups.Select(wg => Model.Where(x => x.WORK_GROUP == wg).Sum(x => x.WO_COUNT)).ToArray();
+
+    var wgCountsForPie = summaryWorkGroups
+        .Select(wg => new { Name = wg, Count = Model.Count(x => x.WORK_GROUP == wg) })
+        .Where(x => x.Count > 0)
+        .OrderByDescending(x => x.Count)
+        .ToList();
+
+    var topWgCount = Math.Min(6, wgCountsForPie.Count);
+    var workGroupPieLabels = wgCountsForPie.Take(topWgCount).Select(x => x.Name).ToList();
+    var workGroupPieData = wgCountsForPie.Take(topWgCount).Select(x => x.Count).ToList();
+
+    if (wgCountsForPie.Count > topWgCount)
+    {
+        workGroupPieLabels.Add("Other");
+        workGroupPieData.Add(wgCountsForPie.Skip(topWgCount).Sum(x => x.Count));
+    }
+
+    var chartPayload = new
+    {
+        ageLabels = new[] { "<4 Hours", "4 to 24 Hours", "24 to 72 Hours", ">3 days" },
+        workGroups = summaryWorkGroups,
+        ageMatrix = ageMatrix,
+        workGroupTotals = wgTotals,
+        slaExceededByWorkGroup = slaByWg,
+        pendingWoByWorkGroup = pendingByWg,
+        slaStatus = new[] { slaExceeded, withinSla },
+        ageTotals = new[] { totalLess4, total4to24, total24to72, totalMore72 },
+        workGroupPieLabels = workGroupPieLabels,
+        workGroupPieData = workGroupPieData
+    };
+}
+
+@section Styles
+{
+    <link rel="stylesheet"
+          href="~/css/fault-dockets.css"
+          asp-append-version="true" />
+}
+
+<div class="fault-page">
+
+    <div class="fault-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div>
+                    <h1>Clarity Fault Dockets Summary Dashboard</h1>
+                    <p>Visual summary of fault duration, work group load, SLA pressure, and pending work orders.</p>
+                </div>
+            </div>
+            <a class="hero-back"
+               asp-controller="FaultDockets"
+               asp-action="Index"
+               asp-route-customerType="@selectedCustomer"
+               asp-route-workGroup="@selectedWorkGroup">
+                <i class="fas fa-arrow-left"></i> Back to Fault Dockets
+            </a>
+        </div>
+    </div>
+
+    <div class="filter-panel">
+        <form method="get" asp-action="SummaryDashboard">
+            <div class="filter-grid">
+                <div class="filter-box">
+                    <label>Select Type</label>
+                    <select name="customerType" class="form-select" onchange="this.form.submit()">
+                        @foreach (var item in customerTypes)
+                        {
+                            if (item == selectedCustomer)
+                            {
+                                <option selected>@item</option>
+                            }
+                            else
+                            {
+                                <option>@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="filter-box">
+                    <label>Select Work Group</label>
+                    <select name="workGroup" class="form-select" onchange="this.form.submit()">
+                        @foreach (var item in workGroups)
+                        {
+                            if (item == selectedWorkGroup)
+                            {
+                                <option selected>@item</option>
+                            }
+                            else
+                            {
+                                <option>@item</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="summary-grid">
+        <div class="summary-card blue">
+            <div class="summary-icon"><i class="fas fa-ticket-alt"></i></div>
+            <div><h2>@totalDockets</h2><span>Total Dockets</span></div>
+        </div>
+        <div class="summary-card red">
+            <div class="summary-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div><h2>@slaExceeded</h2><span>SLA Exceeded</span></div>
+        </div>
+        <div class="summary-card green">
+            <div class="summary-icon"><i class="fas fa-check-circle"></i></div>
+            <div><h2>@withinSla</h2><span>Within SLA</span></div>
+        </div>
+        <div class="summary-card orange">
+            <div class="summary-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div><h2>@pendingWO</h2><span>Pending WO</span></div>
+        </div>
+        <div class="summary-card purple">
+            <div class="summary-icon"><i class="fas fa-users"></i></div>
+            <div><h2>@workGroupCount</h2><span>Work Groups</span></div>
+        </div>
+        <div class="summary-card cyan">
+            <div class="summary-icon"><i class="fas fa-bell"></i></div>
+            <div><h2>@(zeroWoCount + oneWoCount)</h2><span>Zero/One WO Alerts</span></div>
+        </div>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-card wide">
+            <div class="chart-title">Fault Duration by Work Group</div>
+            <div class="chart-wrap"><canvas id="ageStackedBarChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">SLA Status</div>
+            <div class="chart-wrap"><canvas id="slaPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Fault Age Distribution</div>
+            <div class="chart-wrap"><canvas id="agePieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Work Group Share</div>
+            <div class="chart-wrap"><canvas id="workGroupPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Pending WO by Work Group</div>
+            <div class="chart-wrap"><canvas id="pendingWoBarChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Total vs SLA Exceeded by Work Group</div>
+            <div class="chart-wrap"><canvas id="wgCompareBarChart"></canvas></div>
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-header">
+            <div>
+                <h3>Summary Table (Fault Duration & Work Group)</h3>
+                <p>Same summary table shown in the Fault Dockets modal, with chart visualizations above.</p>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover mb-0 text-center align-middle bg-white">
+                <thead class="text-white" style="background: linear-gradient(135deg, #0f4c81, #1976d2);">
+                    <tr>
+                        <th class="text-start ps-3">Work Group</th>
+                        <th>&lt;4 Hours</th>
+                        <th>4 to 24Hours</th>
+                        <th>24hour to 72hours</th>
+                        <th>&gt;3 days</th>
+                        <th class="bg-dark text-white">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < summaryWorkGroups.Count; i++)
+                    {
+                        var wg = summaryWorkGroups[i];
+                        var row = ageMatrix[i];
+                        var rowTotal = row.Sum();
+                        <tr>
+                            <td class="text-start ps-3 fw-bold text-dark">@wg</td>
+                            <td>@row[0]</td>
+                            <td>@row[1]</td>
+                            <td>@row[2]</td>
+                            <td>@row[3]</td>
+                            <td class="fw-bold bg-light text-primary">@rowTotal</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="fw-bold bg-light border-top">
+                    <tr>
+                        <td class="text-start ps-3 text-uppercase font-weight-bold">Total</td>
+                        <td class="text-primary fs-6">@totalLess4</td>
+                        <td class="text-primary fs-6">@total4to24</td>
+                        <td class="text-primary fs-6">@total24to72</td>
+                        <td class="text-primary fs-6">@totalMore72</td>
+                        <td class="text-white bg-primary fs-6">@grandTotalSummary</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const chartData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(chartPayload));
+
+        if (window.Chart) {
+            const ageColors = ['#1976d2', '#26a69a', '#fb8c00', '#d32f2f'];
+            const pieColors = ['#1976d2', '#2e7d32', '#fb8c00', '#8e24aa', '#00838f', '#d32f2f', '#78909c'];
+
+            new Chart(document.getElementById('slaPieChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['SLA Exceeded', 'Within SLA'],
+                    datasets: [{
+                        data: chartData.slaStatus,
+                        backgroundColor: ['#d32f2f', '#2e7d32'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('agePieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [{
+                        data: chartData.ageTotals,
+                        backgroundColor: ageColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            if (chartData.workGroupPieData.length > 0) {
+                new Chart(document.getElementById('workGroupPieChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: chartData.workGroupPieLabels,
+                        datasets: [{
+                            data: chartData.workGroupPieData,
+                            backgroundColor: pieColors,
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+            }
+
+            new Chart(document.getElementById('ageStackedBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: chartData.ageLabels.map((label, index) => ({
+                        label: label,
+                        data: chartData.ageMatrix.map(row => row[index]),
+                        backgroundColor: ageColors[index],
+                        borderRadius: 4
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { stacked: true, beginAtZero: true, ticks: { precision: 0 } },
+                        y: { stacked: true }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('pendingWoBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: [{
+                        label: 'Pending WO',
+                        data: chartData.pendingWoByWorkGroup,
+                        backgroundColor: '#00838f',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            new Chart(document.getElementById('wgCompareBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: [
+                        {
+                            label: 'Total Dockets',
+                            data: chartData.workGroupTotals,
+                            backgroundColor: '#1976d2',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'SLA Exceeded',
+                            data: chartData.slaExceededByWorkGroup,
+                            backgroundColor: '#d32f2f',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+    </script>
+}

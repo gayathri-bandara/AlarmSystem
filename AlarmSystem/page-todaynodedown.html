@@ -1,0 +1,7647 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Down Report - AlarmSystem</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=pt9pqkanF4mV0TDuxpltWRBUjRFmu5FYe4kuRfrZLAQ" />
+    <link rel="stylesheet" href="/AlarmSystem.styles.css?v=l6R0MrkDDFTLCC6oh2nQFA5134YPgJzx5GYDyv-gf2g" />
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+    
+</head>
+
+
+<body class="bg-light  has-sidebar">
+
+    <header b-z23fy4zdhm>
+        <nav b-z23fy4zdhm class="navbar navbar-expand-lg glass-nav">
+            <div b-z23fy4zdhm class="container">
+               <div b-z23fy4zdhm class="nav-left">
+
+        <button b-z23fy4zdhm id="sideMenuToggle"
+                class="btn btn-sm side-menu-toggle"
+                type="button"
+                aria-controls="mainSideMenu"
+                aria-expanded="false"
+                aria-label="Show menu"
+                title="Show menu">
+
+            <span b-z23fy4zdhm class="menu-icon">
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+            </span>
+
+        </button>
+
+    <a class="navbar-brand navbar-logo" href="/">
+
+        <img src="/img/slt-logo.svg" class="slt-logo-header" alt="SLTMobitel" />
+
+    </a>
+
+</div>
+
+<div b-z23fy4zdhm class="nav-center">
+
+    <h2 b-z23fy4zdhm class="brand-title">
+        AlarmSystem
+    </h2>
+
+    <div b-z23fy4zdhm class="brand-subtitle">
+        Network Monitoring Platform
+    </div>
+
+</div>
+
+                <button b-z23fy4zdhm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+                        aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-z23fy4zdhm class="navbar-toggler-icon"></span>
+                </button>
+
+                <div b-z23fy4zdhm class="collapse navbar-collapse" id="topNav">
+                    <ul b-z23fy4zdhm class="navbar-nav ms-auto align-items-lg-center">
+                            <li b-z23fy4zdhm class="nav-item me-3">
+                                <div b-z23fy4zdhm class="profile-card">
+                                    <div b-z23fy4zdhm class="profile-icon">
+                                        👤
+                                    </div>
+                                    <div b-z23fy4zdhm class="profile-info">
+                                        <div b-z23fy4zdhm class="profile-name">
+                                            Dev User
+                                        </div>
+                                        <div b-z23fy4zdhm class="profile-role">
+                                            Authenticated
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li b-z23fy4zdhm class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" title="Sign out of system" href="/Account/Logout">
+                                    <i b-z23fy4zdhm class="fa-solid fa-right-from-bracket"></i>
+                                    <span b-z23fy4zdhm>Logout</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-z23fy4zdhm class="app-shell with-sidebar">
+            <aside b-z23fy4zdhm id="mainSideMenu" class="side-menu" aria-label="Main menu">
+                <div b-z23fy4zdhm class="side-menu-title">Main menu</div>
+                <nav b-z23fy4zdhm class="side-menu-nav">
+                  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent "
+           href="#">
+            Dashboard
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander expanded"
+                type="button"
+                data-menu-toggle="dashboard-submenu"
+                aria-controls="dashboard-submenu"
+                aria-expanded="true">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="dashboard-submenu" class="side-submenu open">
+
+        <a class="side-sublink" href="/Home/AlarmDashboard">
+            Alarm Dashboard
+        </a>
+
+        <a class="side-sublink" href="/Home/Dashboard">
+            Other Operations
+        </a>
+
+    </div>
+
+</div>
+
+                    <div b-z23fy4zdhm class="side-link-group">
+                        <div b-z23fy4zdhm class="side-link-row">
+                            <a class="side-link side-link-parent " href="/Home/ViewData">
+                                View Data
+                            </a>
+                            <button b-z23fy4zdhm class="side-link-expander "
+                                    type="button"
+                                    data-menu-toggle="viewdata-submenu"
+                                    aria-controls="viewdata-submenu"
+                                    aria-expanded="false"
+                                    title="Toggle View Data menu">
+                                <span b-z23fy4zdhm aria-hidden="true">▾</span>
+                            </button>
+                        </div>
+
+                        <div b-z23fy4zdhm id="viewdata-submenu" class="side-submenu ">
+                            <a class="side-sublink " data-viewdata-section-key="realtime-alarms" href="/Home/RealtimeAlarm">
+                                Realtime Alarm
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-fault-oss" href="/Home/CustomerFaultOss">
+                                Customer Fault (OSS)
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-details" href="/Home/CustomerDetails">
+                                Customer Details
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="network-element-details" href="/Home/NetworkElementDetails">
+                                Network Element Details
+                            </a>
+                        </div>
+                    </div>
+
+
+
+<a class="side-link " href="/ManualEscalation">
+    Manual Escalations
+</a>
+<a class="side-link " href="/Alarm">
+    Alarms
+</a>
+
+<a class="side-link " href="/FaultDockets">
+    Fault-Dockets
+</a>
+
+<a class="side-link " href="/Inbox">
+    Inbox
+</a>
+
+<a class="side-link " href="/Views">
+    Views
+</a>
+
+
+<a class="side-link " href="/Home/ApiTester">
+    Starlink
+</a>
+
+<a class="side-link " href="/Links">
+    Links
+</a>
+
+<a class="side-link " href="/AlarmDelay">
+    Alarm Delays
+</a>
+
+<a class="side-link " href="/TroubleTicket">
+    Trouble Ticket
+</a>
+
+<a class="side-link " href="/Config">
+    Config
+</a>
+
+
+
+<div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent"
+           href="#">
+            Search
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander"
+                type="button"
+                data-menu-toggle="search-submenu"
+                aria-controls="search-submenu"
+                aria-expanded="false">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="search-submenu" class="side-submenu">
+
+        <a class="side-sublink" href="/CircuitId">
+            Search Circuit
+        </a>
+
+        <a class="side-sublink" href="/SearchByNode">
+            Search By Node Name
+        </a>
+
+    </div>
+
+</div>
+
+<a class="side-link" href="/PowerAlarm">
+    POWER ALARM
+</a>
+
+
+
+  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent" href="#">
+            Report
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander "
+                type="button"
+                data-menu-toggle="report-submenu"
+                aria-controls="report-submenu"
+                aria-expanded="false">
+            <span b-z23fy4zdhm>▾</span>
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="report-submenu" class="side-submenu ">
+
+        <a class="side-sublink" href="/TodayNodeDown">
+            Today Node Down
+        </a>
+
+        <a class="side-sublink" href="/SummaryCarrierFaults">
+            Summary Carrier Faults
+        </a>
+
+        <a class="side-sublink" href="/SummaryNetworkFaults">
+            Summary Network Faults
+        </a>
+
+        <a class="side-sublink" href="/NodeDownReport">
+            Node Down
+        </a>
+
+        <a class="side-sublink" href="/ACMainFailure">
+            AC Mains Failure
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryEngineer">
+            Alarm History Network Engineer
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryProvince">
+            Alarm History Provincewise
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryRegion">
+            Alarm History Regionwise
+        </a>
+
+        <a class="side-sublink" href="/Summary">
+            Summary
+        </a>
+
+        <a class="side-sublink" href="/Report/NodeDownReport">
+            CEA Port Report
+        </a>
+
+        <a class="side-sublink " href="/DailyEmailReport">
+            ✉ Daily Email Report
+        </a>
+
+    </div>
+
+</div>
+
+
+<a class="side-link" href="/RPBSummary">
+    RPB Summary
+</a>
+                </nav>
+            </aside>
+
+        <div b-z23fy4zdhm class="app-content">
+    <main b-z23fy4zdhm class="container-fluid py-4 px-3">
+    
+
+<h2 class="mb-3">NODE DOWN REPORT</h2>
+
+<div class="mb-3">
+    <a class="btn btn-success" href="/TodayNodeDown/ExportExcel">
+        Export to Excel
+    </a>
+</div>
+
+<div class="table-responsive">
+
+<table class="table table-bordered table-striped table-sm">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Site Name</th>
+            <th>Node</th>
+            <th>Network Eng</th>
+            <th>Region</th>
+            <th>Province</th>
+            <th>Vendor</th>
+            <th>MSAN/OLT</th>
+            <th>AC Mains Failure Time</th>
+            <th>AC Mains Failure</th>
+            <th>Battery Low Time</th>
+            <th>Battery Low</th>
+            <th>Node Down Time</th>
+            <th>Node Down</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+
+        <td></td>
+
+        <td></td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AG-Kahawa</td>
+
+        <td>AG-KHW_C350M_01</td>
+
+        <td>W.A.L.Wasantha</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province West</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Akuressa FTTH (Indoor) 01</td>
+
+        <td>AK_ISAM7360_04</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Kiyaduwa</td>
+
+        <td>AK-KDW_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Maliduwa</td>
+
+        <td>AK-MLD_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KL-Akkarepaththuwa FTTH (indoor) 01</td>
+
+        <td>AKP_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Akurana FTTH(Indoor)01</td>
+
+        <td>AKU_ISAM7360_02</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Akurana</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Ampara</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HB-Ambalanthota FTTH (indoor) 01</td>
+
+        <td>AQ_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Ambalakanda</td>
+
+        <td>AR-ABK_ZXDSL9806H_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Demadaheeriya</td>
+
+        <td>AR-DMH_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AW-Puwakpitiya Junction</td>
+
+        <td>AW-PWP_C350M_01</td>
+
+        <td>Ashwin Kirupakaran</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Badulla-06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Badulla-07</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Balangoda</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Bandarawela</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Bandarawela_09</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BAT-SL Army  Defense HQ Akuregoda BAT-SDH-0311 (NGN-Ph5-2014-PO1) EC20E,OD-1000 [ODG]</td>
+
+        <td>BAT-SDH_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>Metro</td>
+
+        <td>Metro 2</td>
+
+        <td>ALCATEL</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>3/3/2025 11:10:14 AM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Batticaloa</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BC-Batticaloa FTTH (indoor) 01</td>
+
+        <td>BC_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BD-Badulla FTTH (Indoor) 01</td>
+
+        <td>BD_ISAM7360_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Balangoda FTTH (indoor) 01</td>
+
+        <td>BG_ISAM7360_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Kirimetithenna Junction</td>
+
+        <td>BG-KRJ_C300M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HB-Aranwela</td>
+
+        <td>BL-ARW_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 10:54:33 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HR-Galketiya Junction</td>
+
+        <td>BLS-GLJ_MSAG5200_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:31:15 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Halkandawila</td>
+
+        <td>BR-HWJ_ZXDSL9806H_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 9:51:39 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Halkandawila</td>
+
+        <td>BR-HWJ_ZXDSL9806H_02</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 9:51:39 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Wavulugala</td>
+
+        <td>BR-WVG_C300M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:47:43 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Bulathkohupitiya SLT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BW-Mahaulpotha</td>
+
+        <td>BW-MUP_C350M_01</td>
+
+        <td>Roshan Bandara</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Chavakachcheri SLT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Dambulla</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>DB-Dambulla FTTH (indoor) 01</td>
+
+        <td>DB_ISAM7360_12</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province North</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Akkara Thisthuna</td>
+
+        <td>DGD-AKT_C350M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Anhettigama</td>
+
+        <td>DI-AHG_ZXDSL9806H_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:10:13 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Digana_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Digana FTTH (Indoor) 01</td>
+
+        <td>DIN_ISAM7360_03</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Digana FTTH (Indoor) 01</td>
+
+        <td>DIN_ISAM7360_04</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Abakote Junction</td>
+
+        <td>DIN-AKJ_C300M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:53:28 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Iskolamuduna</td>
+
+        <td>DIN-ISK_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 8:44:50 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Malpana</td>
+
+        <td>DIN-MLP_MSAG5200_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Putuhapuwa</td>
+
+        <td>DIN-PTH_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 8:44:53 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Radampola</td>
+
+        <td>DW-RDP_MSAG5200_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Eheliyagoda FTTH (indoor) 01</td>
+
+        <td>EH_ISAM7360_04</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Eheliyagoda</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Panawala</td>
+
+        <td>EH-PNW_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 8:46:52 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>ND-Kanattha Road</td>
+
+        <td>EMU-KNT_MSAG5200_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:58 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>ND-Madiwela rd (Delgahawaththa rd)</td>
+
+        <td>EMU-MWR_MA5603T_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:15:57 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>ND-Salawa Road</td>
+
+        <td>EMU-SLR_MA5603T_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:15:57 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Eravur</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Galagedara_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Galewala</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Gampola_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Gelioya</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Galagedara FTTH(Indoor) 01</td>
+
+        <td>GG_ISAM7360_05</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Buduruwa Kanda</td>
+
+        <td>GGM-BRK_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Galewela Junction</td>
+
+        <td>GGM-GWJ_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MT-Pallegama</td>
+
+        <td>GHN-PGA_ZXDSL9806H_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MT-Rambukewela Junction</td>
+
+        <td>GHN-RBJ_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Ginigathhena SLT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GL-Padinnoruwa</td>
+
+        <td>GL-PDN_C350M_01</td>
+
+        <td>W.A.L.Wasantha</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/10/2026 9:57:22 PM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Gelioya FTTH (indoor) 01</td>
+
+        <td>GO_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Gampola FTTH(Indoor) 01</td>
+
+        <td>GP_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GQ-Asgiriwalpola Road</td>
+
+        <td>GQ-AWR_C300M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GQ-Morupola Junction</td>
+
+        <td>GQ-MPJ_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HT-Ginigathhena FTTH (indoor) 01</td>
+
+        <td>GT_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KLY-Giriulla FTTH(Indoor)</td>
+
+        <td>GU_MA5600T_02</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KLY-Balawala Junction</td>
+
+        <td>GU-BWJ_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Handessa</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Hanguranketha</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Hatton</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Havelock</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Havelock Road</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Hanguranketha FTTH (indoor) 01</td>
+
+        <td>HKT_ISAM7360_02</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RM-Siddamulla</td>
+
+        <td>HON-SDD_MSAG5200_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HO-Pitipana Junction</td>
+
+        <td>HO-PTJ_MA5600T_01</td>
+
+        <td>Ashwin Kirupakaran</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HR-Kurana</td>
+
+        <td>HPG-KRN_C350M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BW-Seelathenna Junction</td>
+
+        <td>HPT-STJ_C350M_01</td>
+
+        <td>Roshan Bandara</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:57:52 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HR-Dikhena</td>
+
+        <td>HR-DKH_MSAG5200_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HT-Hatton FTTH (Indoor) 01</td>
+
+        <td>HT_ISAM7360_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HT-Hatton FTTH (Indoor) 01</td>
+
+        <td>HT_ISAM7360_07</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KLY-Girathalana</td>
+
+        <td>HZ-GRT_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:04:47 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GL-Develgoda</td>
+
+        <td>IM-DVG_C350M_01</td>
+
+        <td>W.A.L.Wasantha</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GL-Howpe</td>
+
+        <td>IM-HWP_C350M_01</td>
+
+        <td>W.A.L.Wasantha</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GL-Kottawagama</td>
+
+        <td>IM-KTW_C350M_01</td>
+
+        <td>W.A.L.Wasantha</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 8:48:06 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AP-Inginiyagala FTTH (Indoor) 01</td>
+
+        <td>IN_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>JA-Jaffna FTTH (Indoor) 01</td>
+
+        <td>JA_ISAM7360_04</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>JA-CEB Arasady junction</td>
+
+        <td>JA-CAJ_MA5603T_01</td>
+
+        <td>T.Nandakumaran (Cov Up)</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 1:58:06 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Jaffna_04</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>JA-Kaladdy Junction</td>
+
+        <td>JA-KLJ_MA5603T_01</td>
+
+        <td>T.Nandakumaran (Cov Up)</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 1:58:06 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Gampola Road Junction</td>
+
+        <td>KAD-GRJ_C300M_01</td>
+
+        <td>Gayan Ekanayake</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 12:16:02 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kadugannawa</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kalawana</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kalawanchikudi</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>NTB-Hiriwala</td>
+
+        <td>KAL-HRW_C300M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 6:17:41 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>NTB-Kumbaloluwa</td>
+
+        <td>KAL-KBO_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kandy</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Katana</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Katugastota_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KON-Ramahara Road</td>
+
+        <td>KDL-RMR_C350M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 12:06:13 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KON-Ranala (New)</td>
+
+        <td>KDL-RNA_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KON-Vihara Mw</td>
+
+        <td>KDL-VHM_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:06:45 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 10:21:00 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>NTB-Galiburea</td>
+
+        <td>KDY-GLB_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Kegalle FTTH (Indoor) 01</td>
+
+        <td>KE_ISAM7360_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Dikkohupitiya</td>
+
+        <td>KE-DKK_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kegalle</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Kiriella  FTTH (indoor) 01</td>
+
+        <td>KEL_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Nawagamuwa</td>
+
+        <td>KE-NWG_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Maspotha</td>
+
+        <td>KG-MPT_MA5600T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Malwatta</td>
+
+        <td>KHA-MLW_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/14/2026 6:22:44 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Maguruwila</td>
+
+        <td>KI-MGW_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Peliyagoda</td>
+
+        <td>KI-PLG_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Kandy  Rd (Pamunuwila Road)</td>
+
+        <td>KI-PMN_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 12:06:16 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Pasal Mawatha</td>
+
+        <td>KI-PSM_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:35:03 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Pathima Gardens (New)</td>
+
+        <td>KI-PTG_C300M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:35:24 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kiriella_SLT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Ramasinghe Rd</td>
+
+        <td>KI-RSR_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Thambiligasmulla</td>
+
+        <td>KI-TGM_C300M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:35:09 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Wilahena Road</td>
+
+        <td>KI-WHR_C300M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Dolegoda</td>
+
+        <td>KJ-DLG_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Kamburupitiya</td>
+
+        <td>KJ-KRP_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Ullala</td>
+
+        <td>KJ-ULA_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>NG-Bolawatta</td>
+
+        <td>KK-BLW_MSAG5200_01</td>
+
+        <td>Krishantha Sandaruwan (Cov Up)</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KL-Natpattimunai Junction</td>
+
+        <td>KL-NPJ_C300M_01</td>
+
+        <td>Y.Kishanthan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 1:16:27 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KLY-Narangalla</td>
+
+        <td>KLY-NRG_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KO-Civic Center</td>
+
+        <td>KO-CVC_MA5603T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kollupitiya-06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Katugastota FTTH(Indoor) 01</td>
+
+        <td>KS_ISAM7360_05</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-4th Mile Post</td>
+
+        <td>KS-FMP_C300M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Udathalawinna Muslim School</td>
+
+        <td>KS-UMS_C300M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:29:32 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Wattegedara (Mosque)</td>
+
+        <td>KS-WTG_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:29:23 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Panwila Terres</td>
+
+        <td>KT-PWT_C350M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Piriwenna Junction</td>
+
+        <td>KUN-PWJ_C300M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>8/11/2026 3:38:56 PM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Kuruwita</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>BC-Pattipalai</td>
+
+        <td>KWD-PTP_C350M_01</td>
+
+        <td>Y.Kishanthan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 11:26:13 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Hettikade Junction</td>
+
+        <td>KWL-HKJ_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/15/2026 6:34:57 AM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KI-Pingamuwa</td>
+
+        <td>KWL-PNG_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:07:37 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Dawgala</td>
+
+        <td>KWN-DWG_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Buthgamuwa Rd</td>
+
+        <td>KX-BUR_MSAG5200_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Duwa Road</td>
+
+        <td>KX-DWR_MSAG5200_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:06 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Kotte Road (Beddagana junction</td>
+
+        <td>KX-KBJ_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:01:03 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Thalawatugoda Road (Keels Supe</td>
+
+        <td>KX-TLR_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:12 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Kandy FTTH (Indoor) 01</td>
+
+        <td>KY_ISAM7360_08</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Kandy FTTH (Indoor) 02</td>
+
+        <td>KY_ISAM7360_09</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Dharmasoka Mawatha (Y Junction)</td>
+
+        <td>KY-DMY_C300M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Pallegama</td>
+
+        <td>KY-PLM_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>CW-Lunuwila Junction</td>
+
+        <td>LW-LWJ_C300M_01</td>
+
+        <td>S.G.K.Wimalasena</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/14/2026 6:22:48 PM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Marawila</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Matale</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Mawanella</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MB-Sooriya Kattaikkaadu</td>
+
+        <td>MB-NTT_MA5603T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MB-Thiruketheeswaram</td>
+
+        <td>MB-TKS_ZXDSL9806H_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/14/2026 3:45:31 AM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>CW-Marawila FTTH (indoor) 01</td>
+
+        <td>MC_ISAM7360_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MD-Deans Road ( Near Heylees)</td>
+
+        <td>MD-DNS_MSAG5200_01</td>
+
+        <td>Ruwan Gunasekara</td>
+
+        <td>METRO</td>
+
+        <td>Metro 1</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>5/25/2026 12:06:44 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MD-Rotherfield Place</td>
+
+        <td>MD-RFP_C300M_01</td>
+
+        <td>Ruwan Gunasekara</td>
+
+        <td>METRO</td>
+
+        <td>Metro 1</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Gramodaya Mw Madiwela</td>
+
+        <td>MDW-GRM_MSAG5200_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:24 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:21:16 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Madiwela Junction</td>
+
+        <td>MDW-MWJ_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 12:28:11 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Pragathi Mawatha, Madiwela Roa</td>
+
+        <td>MDW-PGM_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:06 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Suhadha Mw</td>
+
+        <td>MDW-SHM_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:24 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-Temple Road (Thalapathpitiya)</td>
+
+        <td>MDW-TMR_C300M_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:15:47 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KT-Walmeegoda</td>
+
+        <td>MGE-WLM_C300M_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HO-Old Road Nawinna (Opposite Ayurweda)</td>
+
+        <td>MHG-OLN_MA5600T_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:16:03 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HO-Old Rd Nawinna (MHG)</td>
+
+        <td>MHG-ORN_MSAG5200_01</td>
+
+        <td>Dhammika Karunananda</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Mawanella FTTH(Indoor)01</td>
+
+        <td>MNA_ISAM7360_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Aluthnuwara</td>
+
+        <td>MNA-ALN_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:15:57 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Udapamunuwa</td>
+
+        <td>MNA-UPM_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 10:11:12 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>NG-Minuwangoda FTTH (Indoor) 01</td>
+
+        <td>MNG_ISAM7360_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>NG-Bulugahamulla</td>
+
+        <td>MNG-BGM_C300M_01</td>
+
+        <td>Kumara Lansakara</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:17:31 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>NG-Yakahatuwa</td>
+
+        <td>MNG-YKH_C300M_01</td>
+
+        <td>Kumara Lansakara</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:17:22 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>CEN-Madampitiya Road</td>
+
+        <td>MTK-MDA_MSAG5200_01</td>
+
+        <td>Ruwan Gunasekara</td>
+
+        <td>METRO</td>
+
+        <td>Metro 1</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>7/12/2026 10:39:08 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>MT-WLJ_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 8:57:52 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Mulatiyana FTTH (Indoor) 01</td>
+
+        <td>MUL_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Mulatiyana</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Muruthlawa FTTH (indoor) 01</td>
+
+        <td>MUR_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Muruthlawa</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Alapaladeniya_New</td>
+
+        <td>MWK-APD_MSAG5200_02</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>CW-Nelumpokuna Junction</td>
+
+        <td>MX-NPJ_MSAG5200_01</td>
+
+        <td>S.G.K.Wimalasena</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 7:19:55 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:01:15 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>BD-Mahiyanganaya FTTH (indoor) 01</td>
+
+        <td>MYN_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Nivithigala FTTH (indoor) 01</td>
+
+        <td>NA_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HK-Narahenpita FTTH (Indoor) 01</td>
+
+        <td>NAR_ISAM7360_04</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Naula</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Nawalapitiya</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Nikadalupotha FTTH (Indoor)</td>
+
+        <td>NDP_MA5600T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AD-Nachchaduwa SLT (Indoor)</td>
+
+        <td>NHD_MA5600T_01</td>
+
+        <td>Isuru Jeewantha</td>
+
+        <td>REGION 3</td>
+
+        <td>North Central Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/13/2026 10:02:08 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Nivithigala</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Hulugalla Junction</td>
+
+        <td>NK-HGJ_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:07:15 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MT-Naula FTTH (indoor) 01</td>
+
+        <td>NL_ISAM7360_03</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province North</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>DB-Hunganwela</td>
+
+        <td>NL-HGW_MSAG5200_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 12:11:16 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Oluvil</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Padavi parakramapura</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>padaviya</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Pallepola</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Peradeniya_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Pilimathalawa</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Pallekele FTTH(Indoor)01</td>
+
+        <td>PKL_ISAM7360_04</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province South</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Balagolla</td>
+
+        <td>PKL-BAL_MSAG5200_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AW-Thunnana</td>
+
+        <td>PK-TNA_MSAG5200_01</td>
+
+        <td>Ashwin Kirupakaran</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>AW-Wewalpanawa Junction</td>
+
+        <td>PK-WPW_MSAG5200_01</td>
+
+        <td>Ashwin Kirupakaran</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 2:06:47 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Pilimathalawa FTTH (indoor) 01</td>
+
+        <td>PML_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Danthure</td>
+
+        <td>PML-DTR_MSAG5200_01</td>
+
+        <td>Gayan Ekanayake</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:02:40 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Walgowwagoda</td>
+
+        <td>PML-WGG_C350M_01</td>
+
+        <td>Gayan Ekanayake</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:02:31 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GP-Peradeniya FTTH(Indoor) 01</td>
+
+        <td>PN_ISAM7360_06</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HO-Panaluwa Watta</td>
+
+        <td>PNG-PNW_MA5603T_01</td>
+
+        <td>Ashwin Kirupakaran</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Dehigaspe</td>
+
+        <td>PTB-DHG_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Rathnapura</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Galpatha Near the Temple</td>
+
+        <td>RC-GLP_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 1:38:37 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td>6/20/2026 5:48:07 PM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Gonaraba Junction</td>
+
+        <td>RC-GNJ_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 1:41:13 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Lewangama SPO</td>
+
+        <td>RC-LWP_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Rukkaththana Junction</td>
+
+        <td>RGM-RKJ_MA5603T_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Hureemaluwa Road</td>
+
+        <td>RK-HMR_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Akiriya Junction</td>
+
+        <td>RKL-ARJ_C350M_01</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/17/2026 10:58:21 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Parape 2</td>
+
+        <td>RK-PRB_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>RN-Rathnapura FTTH (indoor) 01</td>
+
+        <td>RN_ISAM7360_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Samanthurei SLT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Sigiriya</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KL-Samanthurei FTTH (indoor) 01</td>
+
+        <td>SM_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KL-Vangalavadi</td>
+
+        <td>SM-VGV_ZXDSL9806H_01</td>
+
+        <td>Y.Kishanthan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>SVG-Sevanagala FTTH (indoor) 01</td>
+
+        <td>SVG_ISAM7360_02</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KX-ICC Housing Scheme</td>
+
+        <td>TAN-ICC_MSAG5200_01</td>
+
+        <td>Indika De Silva</td>
+
+        <td>METRO</td>
+
+        <td>Metro 2</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>TC-Anpuvalipuram Pillaiyar Kovil</td>
+
+        <td>TC-APK_MA5603T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>TC-Mudcove Road</td>
+
+        <td>TC-MCR_MSAG5200_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:04:14 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>TC-Railway Crossing (Palaiyoothu)</td>
+
+        <td>TC-RCS_MA5600T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:04:05 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>TC-Rajawarothayam Square Kovil</td>
+
+        <td>TC-RSK_MA5603T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Eastern Province</td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>TEST-ALARM_BR_NE</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/16/2026 4:37:33 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Thelijjawila</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Thissamaharamaya</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HB-ThissamaharamayaFTTH (indoor) 01</td>
+
+        <td>TRS_ISAM7360_03</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Thalathuoya FTTH (indoor) 01</td>
+
+        <td>TTY_ISAM7360_03</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province North</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KE-Alapalawa</td>
+
+        <td>UD-ALP_C350M_01</td>
+
+        <td>Chintaka Kandapahala</td>
+
+        <td>REGION 2</td>
+
+        <td>Sabaragamuwa &amp; UVA</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>7/3/2026 4:58:18 PM</td>
+
+        <td>Battery Low</td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GQ-Kahatowita</td>
+
+        <td>UDT-KTO_MSAG5200_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:24:48 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GQ-Walgammulla Junction</td>
+
+        <td>UDT-WMJ_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>GQ-Warapalana</td>
+
+        <td>UDT-WRP_C350M_01</td>
+
+        <td>Kamal Tilakaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Western Province North</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 1:51:11 AM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Ukuwela</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Valachchena</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>VA-Moonrumurippu</td>
+
+        <td>VA-MMR_MA5603T_01</td>
+
+        <td>P. Sri Puveehan</td>
+
+        <td>REGION 3</td>
+
+        <td>Northern Province </td>
+
+        <td>HUAWEI</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>WARAKAPOLA_X8_CEA ( 2/0/0 )</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Waththegama</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>PH-Daladawatta</td>
+
+        <td>WDW-DWA_MSAG5200_01</td>
+
+        <td>Lalin Thilanka</td>
+
+        <td>REGION 2</td>
+
+        <td>Western Province South</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>HK-Wellawatta FTTH (Indoor) 01</td>
+
+        <td>WEL_ISAM7360_05</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Wellawatta</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KY-Waththegama FTTH (Indoor) 01</td>
+
+        <td>WH_ISAM7360_03</td>
+
+        <td>Manora W. Senaratne</td>
+
+        <td>REGION 1</td>
+
+        <td>Central Province North</td>
+
+        <td>NOKIA</td>
+
+        <td>OLT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Ibbawala</td>
+
+        <td>WJ-IBW_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/16/2026 6:24:03 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Koledanda</td>
+
+        <td>WJ-KLD_C300M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 1:45:59 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Polwaththa</td>
+
+        <td>WJ-PLW_C350M_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>PR-Sewanapitiya</td>
+
+        <td>WKN-SWP_MSAG5200_01</td>
+
+        <td>Mohamed Rifnaz</td>
+
+        <td>REGION 1</td>
+
+        <td>North Central Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>KG-Rambawewa Junction</td>
+
+        <td>WP-RWJ_MSAG5200_01</td>
+
+        <td>Thilini Amarasinghe</td>
+
+        <td>REGION 1</td>
+
+        <td>North Western Province</td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 2:09:01 PM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td></td>
+
+        <td>Yatiyana</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td>DEFAULT</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Ingurupathvila -Pahala Apperakka</td>
+
+        <td>YMH-IGP_ZXDSL9806H_01</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td>9/18/2026 9:56:36 AM</td>
+
+        <td>AC Mains Failure</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:11:40 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+    <tr>
+
+        <td>MH-Ingurupathvila -Pahala Apperakka</td>
+
+        <td>YMH-IGP_ZXDSL9806H_02</td>
+
+        <td>Chandima Abeywardhana</td>
+
+        <td>REGION 2</td>
+
+        <td>Southern Province </td>
+
+        <td>ZTE</td>
+
+        <td>MSAN</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>9/18/2026 2:11:40 PM</td>
+
+        <td>Node Down</td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+</div>
+</main>
+
+            <footer b-z23fy4zdhm class="border-top bg-white">
+                <div b-z23fy4zdhm class="container py-3 d-flex justify-content-between align-items-center">
+                    <span b-z23fy4zdhm class="text-muted small">&copy; 2026 - AlarmSystem</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.appApiBase = '/api';
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script src="/js/site.js?v=UaRoscdjdIu4a9ODZAPyVfPowkHQ7K5P0cMQb2LqfCY"></script>
+
+
+    
+</body>
+</html>

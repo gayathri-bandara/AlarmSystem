@@ -1,0 +1,433 @@
+@model AlarmSystem.ViewModels.SummaryNetworkFaultViewModel
+
+@{
+    ViewData["Title"] = "Other Operator Faults Summary Dashboard";
+
+    var summary = Model.Summary ?? new AlarmSystem.Models.NetworkSummaryModel();
+    var details = Model.Details ?? new List<AlarmSystem.Models.SummaryNetworkFaultModel>();
+
+    int totalFaults = summary.Dialog + summary.Mobitel + summary.Hutch + summary.Airtel;
+
+    var operatorLabels = new[] { "Dialog", "Mobitel", "Hutch", "Airtel" };
+    var operatorData = new[] { summary.Dialog, summary.Mobitel, summary.Hutch, summary.Airtel };
+
+    var ageLabels = new[] { "<1 Day", "1-3 Days", "3-7 Days", ">7 Days" };
+
+    var dialogAge = new[]
+    {
+        details.Sum(x => x.Dialog_LT1D),
+        details.Sum(x => x.Dialog_1D_3D),
+        details.Sum(x => x.Dialog_3D_7D),
+        details.Sum(x => x.Dialog_GT7D)
+    };
+
+    var mobitelAge = new[]
+    {
+        details.Sum(x => x.Mobitel_LT1D),
+        details.Sum(x => x.Mobitel_1D_3D),
+        details.Sum(x => x.Mobitel_3D_7D),
+        details.Sum(x => x.Mobitel_GT7D)
+    };
+
+    var hutchAge = new[]
+    {
+        details.Sum(x => x.Hutch_LT1D),
+        details.Sum(x => x.Hutch_1D_3D),
+        details.Sum(x => x.Hutch_3D_7D),
+        details.Sum(x => x.Hutch_GT7D)
+    };
+
+    var airtelAge = new[]
+    {
+        details.Sum(x => x.Airtel_LT1D),
+        details.Sum(x => x.Airtel_1D_3D),
+        details.Sum(x => x.Airtel_3D_7D),
+        details.Sum(x => x.Airtel_GT7D)
+    };
+
+    var ageTotals = new[]
+    {
+        dialogAge[0] + mobitelAge[0] + hutchAge[0] + airtelAge[0],
+        dialogAge[1] + mobitelAge[1] + hutchAge[1] + airtelAge[1],
+        dialogAge[2] + mobitelAge[2] + hutchAge[2] + airtelAge[2],
+        dialogAge[3] + mobitelAge[3] + hutchAge[3] + airtelAge[3]
+    };
+
+    Func<AlarmSystem.Models.SummaryNetworkFaultModel, int> rowTotal = x =>
+        x.Dialog_LT1D + x.Dialog_1D_3D + x.Dialog_3D_7D + x.Dialog_GT7D +
+        x.Mobitel_LT1D + x.Mobitel_1D_3D + x.Mobitel_3D_7D + x.Mobitel_GT7D +
+        x.Hutch_LT1D + x.Hutch_1D_3D + x.Hutch_3D_7D + x.Hutch_GT7D +
+        x.Airtel_LT1D + x.Airtel_1D_3D + x.Airtel_3D_7D + x.Airtel_GT7D;
+
+    var regionTotals = details
+        .GroupBy(x => string.IsNullOrWhiteSpace(x.REGION) ? "UNKNOWN" : x.REGION)
+        .Select(g => new { Region = g.Key, Total = g.Sum(rowTotal) })
+        .OrderByDescending(x => x.Total)
+        .Take(10)
+        .ToList();
+
+    var chartPayload = new
+    {
+        operatorLabels,
+        operatorData,
+        ageLabels,
+        ageData = ageTotals,
+        dialogAge,
+        mobitelAge,
+        hutchAge,
+        airtelAge,
+        regionLabels = regionTotals.Select(x => x.Region).ToArray(),
+        regionData = regionTotals.Select(x => x.Total).ToArray(),
+        totalFaults
+    };
+}
+
+<style>
+
+.container-fluid{
+    padding:20px;
+}
+
+.page-title{
+    color:darkblue;
+    font-weight:bold;
+    margin:0;
+}
+
+.kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:16px;
+    margin:20px 0 24px;
+}
+
+.kpi-card{
+    background:#fff;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.kpi-card h3{
+    margin:0;
+    font-size:28px;
+    color:#007bff;
+}
+
+.kpi-card.green h3{ color:#28a745; }
+.kpi-card.orange h3{ color:#fd7e14; }
+.kpi-card.red h3{ color:#dc3545; }
+.kpi-card.dark h3{ color:#343a40; }
+
+.kpi-card span{
+    color:#6c757d;
+    font-weight:600;
+}
+
+.summary-table{
+    width:60%;
+    margin:0 auto 24px;
+}
+
+.summary-table th{
+    background:#3a4f63;
+    color:white;
+    text-align:center;
+}
+
+.summary-table td{
+    text-align:center;
+    font-weight:bold;
+    border:1px solid #000;
+}
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:20px;
+    margin-bottom:28px;
+}
+
+.chart-card{
+    grid-column:span 6;
+    background:#fff;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+.chart-card.wide{
+    grid-column:span 12;
+}
+
+.chart-title{
+    font-weight:700;
+    color:#212529;
+    margin-bottom:14px;
+}
+
+.chart-box{
+    position:relative;
+    height:340px;
+}
+
+.matrix-table th,
+.matrix-table td{
+    text-align:center;
+    vertical-align:middle;
+}
+
+.matrix-table thead th{
+    color:#fff;
+}
+
+@@media(max-width:992px){
+
+.kpi-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.chart-card,
+.chart-card.wide{
+    grid-column:span 12;
+}
+
+.summary-table{
+    width:80%;
+}
+
+}
+
+@@media(max-width:576px){
+
+.kpi-grid{
+    grid-template-columns:1fr;
+}
+
+.summary-table{
+    width:100%;
+}
+
+}
+
+</style>
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="page-title">OTHER OPERATOR FAULTS SUMMARY DASHBOARD</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            &larr; Back to Summary
+        </a>
+    </div>
+
+    <div class="kpi-grid">
+        <div class="kpi-card dark">
+            <h3>@totalFaults</h3>
+            <span>Total Faults</span>
+        </div>
+        <div class="kpi-card">
+            <h3>@summary.Dialog</h3>
+            <span>Dialog</span>
+        </div>
+        <div class="kpi-card green">
+            <h3>@summary.Mobitel</h3>
+            <span>Mobitel</span>
+        </div>
+        <div class="kpi-card orange">
+            <h3>@summary.Hutch</h3>
+            <span>Hutch</span>
+        </div>
+        <div class="kpi-card red">
+            <h3>@summary.Airtel</h3>
+            <span>Airtel</span>
+        </div>
+    </div>
+
+    <table class="table table-bordered summary-table">
+        <tr>
+            <th>Dialog</th>
+            <th>Mobitel</th>
+            <th>Hutch</th>
+            <th>Airtel</th>
+        </tr>
+        <tr>
+            <td>@summary.Dialog</td>
+            <td>@summary.Mobitel</td>
+            <td>@summary.Hutch</td>
+            <td>@summary.Airtel</td>
+        </tr>
+    </table>
+
+    <div class="chart-grid">
+        <div class="chart-card">
+            <div class="chart-title">Operator Distribution</div>
+            <div class="chart-box"><canvas id="operatorPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Fault Age Distribution</div>
+            <div class="chart-box"><canvas id="agePieChart"></canvas></div>
+        </div>
+        <div class="chart-card wide">
+            <div class="chart-title">Faults by Operator and Age Group</div>
+            <div class="chart-box"><canvas id="operatorAgeBarChart"></canvas></div>
+        </div>
+        <div class="chart-card wide">
+            <div class="chart-title">Top Regions by Fault Count</div>
+            <div class="chart-box"><canvas id="regionBarChart"></canvas></div>
+        </div>
+    </div>
+
+    <h5 class="mb-3">Faults by Operator and Age Group</h5>
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered matrix-table bg-white">
+            <thead>
+                <tr>
+                    <th class="table-dark">Age Group</th>
+                    <th class="table-primary">Dialog</th>
+                    <th class="table-success">Mobitel</th>
+                    <th class="table-warning">Hutch</th>
+                    <th class="table-danger">Airtel</th>
+                    <th class="table-secondary">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < ageLabels.Length; i++)
+                {
+                    <tr>
+                        <td class="fw-bold">@ageLabels[i]</td>
+                        <td>@dialogAge[i]</td>
+                        <td>@mobitelAge[i]</td>
+                        <td>@hutchAge[i]</td>
+                        <td>@airtelAge[i]</td>
+                        <td class="fw-bold">@ageTotals[i]</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="fw-bold">
+                    <td>Total</td>
+                    <td>@dialogAge.Sum()</td>
+                    <td>@mobitelAge.Sum()</td>
+                    <td>@hutchAge.Sum()</td>
+                    <td>@airtelAge.Sum()</td>
+                    <td>@ageTotals.Sum()</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const chartData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(chartPayload));
+
+        if (window.Chart) {
+            const operatorColors = ['#007bff', '#28a745', '#fd7e14', '#dc3545'];
+            const ageColors = ['#007bff', '#ffc107', '#fd7e14', '#dc3545'];
+
+            new Chart(document.getElementById('operatorPieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.operatorLabels,
+                    datasets: [{
+                        data: chartData.operatorData,
+                        backgroundColor: operatorColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('agePieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [{
+                        data: chartData.ageData,
+                        backgroundColor: ageColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('operatorAgeBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [
+                        {
+                            label: 'Dialog',
+                            data: chartData.dialogAge,
+                            backgroundColor: '#007bff',
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Mobitel',
+                            data: chartData.mobitelAge,
+                            backgroundColor: '#28a745',
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Hutch',
+                            data: chartData.hutchAge,
+                            backgroundColor: '#fd7e14',
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Airtel',
+                            data: chartData.airtelAge,
+                            backgroundColor: '#dc3545',
+                            borderRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('regionBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.regionLabels,
+                    datasets: [{
+                        label: 'Total Faults',
+                        data: chartData.regionData,
+                        backgroundColor: '#007bff',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+    </script>
+}

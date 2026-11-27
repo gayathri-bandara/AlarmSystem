@@ -1,0 +1,33 @@
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[REPORT_New_NW_MAPPING_REGION_MSAN_OPEN] 
+
+@from smalldatetime,
+@to smalldatetime,
+
+@nw_eng nvarchar(100)
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	if @nw_eng='~ALL~'
+		select * from FAULTS HF left join NW_REGION_MAPPING R ON SUBSTRING(REPLACE(HF.node, '_', '-'), 1, CHARINDEX('-', REPLACE(HF.node, '_', '-')) - 1) = R.LEA_Code
+		where FAULT_STATUS='OPEN' and   CONVERT(date,FAULT_TIME) BETWEEN CONVERT(date,@from) AND CONVERT(date,@to) and PLATFORM in ('MSAN') and HF.node NOT LIKE 'Test%' and ALARM_TYPE='Node Down' and NODE!='WLW-HPG_ZXDSL9806H_02' order by  FAULT_TIME desc
+	else
+	select * from FAULTS HF left join NW_REGION_MAPPING R ON SUBSTRING(REPLACE(HF.node, '_', '-'), 1, CHARINDEX('-', REPLACE(HF.node, '_', '-')) - 1) = R.LEA_Code
+		where  FAULT_STATUS='OPEN' and CONVERT(date,FAULT_TIME) BETWEEN CONVERT(date,@from) AND CONVERT(date,@to) and PLATFORM in ('MSAN') and HF.node NOT LIKE 'Test%' and ALARM_TYPE='Node Down'  and R.[NW_Designation]=@nw_eng and NODE!='WLW-HPG_ZXDSL9806H_02' order by  FAULT_TIME desc
+	
+
+
+
+END
+
+
+
+
+(1 rows affected)

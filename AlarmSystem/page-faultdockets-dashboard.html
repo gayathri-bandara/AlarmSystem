@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clarity Fault Dockets Summary Dashboard - AlarmSystem</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=pt9pqkanF4mV0TDuxpltWRBUjRFmu5FYe4kuRfrZLAQ" />
+    <link rel="stylesheet" href="/AlarmSystem.styles.css?v=l6R0MrkDDFTLCC6oh2nQFA5134YPgJzx5GYDyv-gf2g" />
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+    <link rel="stylesheet" href="/css/fault-dockets.css?v=jBkDJkFHl_SsaFYcoVpb1fLS7W7B03WiPgciokHOsPE" />
+
+    
+</head>
+
+
+<body class="bg-light  has-sidebar">
+
+    <header b-z23fy4zdhm>
+        <nav b-z23fy4zdhm class="navbar navbar-expand-lg glass-nav">
+            <div b-z23fy4zdhm class="container">
+               <div b-z23fy4zdhm class="nav-left">
+
+        <button b-z23fy4zdhm id="sideMenuToggle"
+                class="btn btn-sm side-menu-toggle"
+                type="button"
+                aria-controls="mainSideMenu"
+                aria-expanded="false"
+                aria-label="Show menu"
+                title="Show menu">
+
+            <span b-z23fy4zdhm class="menu-icon">
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+            </span>
+
+        </button>
+
+    <a class="navbar-brand navbar-logo" href="/">
+
+        <img src="/img/slt-logo.svg" class="slt-logo-header" alt="SLTMobitel" />
+
+    </a>
+
+</div>
+
+<div b-z23fy4zdhm class="nav-center">
+
+    <h2 b-z23fy4zdhm class="brand-title">
+        AlarmSystem
+    </h2>
+
+    <div b-z23fy4zdhm class="brand-subtitle">
+        Network Monitoring Platform
+    </div>
+
+</div>
+
+                <button b-z23fy4zdhm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+                        aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-z23fy4zdhm class="navbar-toggler-icon"></span>
+                </button>
+
+                <div b-z23fy4zdhm class="collapse navbar-collapse" id="topNav">
+                    <ul b-z23fy4zdhm class="navbar-nav ms-auto align-items-lg-center">
+                            <li b-z23fy4zdhm class="nav-item me-3">
+                                <div b-z23fy4zdhm class="profile-card">
+                                    <div b-z23fy4zdhm class="profile-icon">
+                                        👤
+                                    </div>
+                                    <div b-z23fy4zdhm class="profile-info">
+                                        <div b-z23fy4zdhm class="profile-name">
+                                            Dev User
+                                        </div>
+                                        <div b-z23fy4zdhm class="profile-role">
+                                            Authenticated
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li b-z23fy4zdhm class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" title="Sign out of system" href="/Account/Logout">
+                                    <i b-z23fy4zdhm class="fa-solid fa-right-from-bracket"></i>
+                                    <span b-z23fy4zdhm>Logout</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-z23fy4zdhm class="app-shell with-sidebar">
+            <aside b-z23fy4zdhm id="mainSideMenu" class="side-menu" aria-label="Main menu">
+                <div b-z23fy4zdhm class="side-menu-title">Main menu</div>
+                <nav b-z23fy4zdhm class="side-menu-nav">
+                  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent "
+           href="#">
+            Dashboard
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander expanded"
+                type="button"
+                data-menu-toggle="dashboard-submenu"
+                aria-controls="dashboard-submenu"
+                aria-expanded="true">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="dashboard-submenu" class="side-submenu open">
+
+        <a class="side-sublink" href="/Home/AlarmDashboard">
+            Alarm Dashboard
+        </a>
+
+        <a class="side-sublink" href="/Home/Dashboard">
+            Other Operations
+        </a>
+
+    </div>
+
+</div>
+
+                    <div b-z23fy4zdhm class="side-link-group">
+                        <div b-z23fy4zdhm class="side-link-row">
+                            <a class="side-link side-link-parent " href="/Home/ViewData">
+                                View Data
+                            </a>
+                            <button b-z23fy4zdhm class="side-link-expander "
+                                    type="button"
+                                    data-menu-toggle="viewdata-submenu"
+                                    aria-controls="viewdata-submenu"
+                                    aria-expanded="false"
+                                    title="Toggle View Data menu">
+                                <span b-z23fy4zdhm aria-hidden="true">▾</span>
+                            </button>
+                        </div>
+
+                        <div b-z23fy4zdhm id="viewdata-submenu" class="side-submenu ">
+                            <a class="side-sublink " data-viewdata-section-key="realtime-alarms" href="/Home/RealtimeAlarm">
+                                Realtime Alarm
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-fault-oss" href="/Home/CustomerFaultOss">
+                                Customer Fault (OSS)
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-details" href="/Home/CustomerDetails">
+                                Customer Details
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="network-element-details" href="/Home/NetworkElementDetails">
+                                Network Element Details
+                            </a>
+                        </div>
+                    </div>
+
+
+
+<a class="side-link " href="/ManualEscalation">
+    Manual Escalations
+</a>
+<a class="side-link " href="/Alarm">
+    Alarms
+</a>
+
+<a class="side-link active" href="/FaultDockets">
+    Fault-Dockets
+</a>
+
+<a class="side-link " href="/Inbox">
+    Inbox
+</a>
+
+<a class="side-link " href="/Views">
+    Views
+</a>
+
+
+<a class="side-link " href="/Home/ApiTester">
+    Starlink
+</a>
+
+<a class="side-link " href="/Links">
+    Links
+</a>
+
+<a class="side-link " href="/AlarmDelay">
+    Alarm Delays
+</a>
+
+<a class="side-link " href="/TroubleTicket">
+    Trouble Ticket
+</a>
+
+<a class="side-link " href="/Config">
+    Config
+</a>
+
+
+
+<div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent"
+           href="#">
+            Search
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander"
+                type="button"
+                data-menu-toggle="search-submenu"
+                aria-controls="search-submenu"
+                aria-expanded="false">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="search-submenu" class="side-submenu">
+
+        <a class="side-sublink" href="/CircuitId">
+            Search Circuit
+        </a>
+
+        <a class="side-sublink" href="/SearchByNode">
+            Search By Node Name
+        </a>
+
+    </div>
+
+</div>
+
+<a class="side-link" href="/PowerAlarm">
+    POWER ALARM
+</a>
+
+
+
+  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent" href="#">
+            Report
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander "
+                type="button"
+                data-menu-toggle="report-submenu"
+                aria-controls="report-submenu"
+                aria-expanded="false">
+            <span b-z23fy4zdhm>▾</span>
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="report-submenu" class="side-submenu ">
+
+        <a class="side-sublink" href="/TodayNodeDown">
+            Today Node Down
+        </a>
+
+        <a class="side-sublink" href="/SummaryCarrierFaults">
+            Summary Carrier Faults
+        </a>
+
+        <a class="side-sublink" href="/SummaryNetworkFaults">
+            Summary Network Faults
+        </a>
+
+        <a class="side-sublink" href="/NodeDownReport">
+            Node Down
+        </a>
+
+        <a class="side-sublink" href="/ACMainFailure">
+            AC Mains Failure
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryEngineer">
+            Alarm History Network Engineer
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryProvince">
+            Alarm History Provincewise
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryRegion">
+            Alarm History Regionwise
+        </a>
+
+        <a class="side-sublink" href="/Summary">
+            Summary
+        </a>
+
+        <a class="side-sublink" href="/Report/NodeDownReport">
+            CEA Port Report
+        </a>
+
+        <a class="side-sublink " href="/DailyEmailReport">
+            ✉ Daily Email Report
+        </a>
+
+    </div>
+
+</div>
+
+
+<a class="side-link" href="/RPBSummary">
+    RPB Summary
+</a>
+                </nav>
+            </aside>
+
+        <div b-z23fy4zdhm class="app-content">
+    <main b-z23fy4zdhm class="container-fluid py-4 px-3">
+    
+
+
+<div class="fault-page">
+
+    <div class="fault-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div>
+                    <h1>Clarity Fault Dockets Summary Dashboard</h1>
+                    <p>Visual summary of fault duration, work group load, SLA pressure, and pending work orders.</p>
+                </div>
+            </div>
+            <a class="hero-back" href="/FaultDockets?customerType=~ALL~&amp;workGroup=~ALL~">
+                <i class="fas fa-arrow-left"></i> Back to Fault Dockets
+            </a>
+        </div>
+    </div>
+
+    <div class="filter-panel">
+        <form method="get" action="/FaultDockets/SummaryDashboard">
+            <div class="filter-grid">
+                <div class="filter-box">
+                    <label>Select Type</label>
+                    <select name="customerType" class="form-select" onchange="this.form.submit()">
+                                <option selected>~ALL~</option>
+                                <option>CORPORATE-LARGE &amp; VERY LARGE</option>
+                                <option>CORPORATE-SME</option>
+                                <option>ENTERPRISE-LARGE</option>
+                                <option>GOVERNMENT OFFICIAL</option>
+                                <option>GOVERNMENT ORGANIZATION</option>
+                                <option>INDIVIDUAL-BUSINESS</option>
+                                <option>INTERNATIONAL-OPERATOR</option>
+                                <option>REGIONAL-SME</option>
+                                <option>REGISTERED-MICRO BIZ</option>
+                                <option>SLT-OFFICE</option>
+                                <option>SMALL BUSINESS</option>
+                                <option>WHOLESALE RE-SELLER</option>
+                                <option>WHOLESALE-OPERATOR</option>
+                    </select>
+                </div>
+                <div class="filter-box">
+                    <label>Select Work Group</label>
+                    <select name="workGroup" class="form-select" onchange="this.form.submit()">
+                                <option selected>~ALL~</option>
+                                <option>CEN-CSC-NW</option>
+                                <option>CEN-CSC-DATA</option>
+                                <option>CEN-CSC-CC</option>
+                                <option>CEN-CSC-MS</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="summary-grid">
+        <div class="summary-card blue">
+            <div class="summary-icon"><i class="fas fa-ticket-alt"></i></div>
+            <div><h2>137</h2><span>Total Dockets</span></div>
+        </div>
+        <div class="summary-card red">
+            <div class="summary-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div><h2>122</h2><span>SLA Exceeded</span></div>
+        </div>
+        <div class="summary-card green">
+            <div class="summary-icon"><i class="fas fa-check-circle"></i></div>
+            <div><h2>15</h2><span>Within SLA</span></div>
+        </div>
+        <div class="summary-card orange">
+            <div class="summary-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div><h2>178</h2><span>Pending WO</span></div>
+        </div>
+        <div class="summary-card purple">
+            <div class="summary-icon"><i class="fas fa-users"></i></div>
+            <div><h2>4</h2><span>Work Groups</span></div>
+        </div>
+        <div class="summary-card cyan">
+            <div class="summary-icon"><i class="fas fa-bell"></i></div>
+            <div><h2>94</h2><span>Zero/One WO Alerts</span></div>
+        </div>
+    </div>
+
+    <div class="chart-grid">
+        <div class="chart-card wide">
+            <div class="chart-title">Fault Duration by Work Group</div>
+            <div class="chart-wrap"><canvas id="ageStackedBarChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">SLA Status</div>
+            <div class="chart-wrap"><canvas id="slaPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Fault Age Distribution</div>
+            <div class="chart-wrap"><canvas id="agePieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Work Group Share</div>
+            <div class="chart-wrap"><canvas id="workGroupPieChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Pending WO by Work Group</div>
+            <div class="chart-wrap"><canvas id="pendingWoBarChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+            <div class="chart-title">Total vs SLA Exceeded by Work Group</div>
+            <div class="chart-wrap"><canvas id="wgCompareBarChart"></canvas></div>
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-header">
+            <div>
+                <h3>Summary Table (Fault Duration & Work Group)</h3>
+                <p>Same summary table shown in the Fault Dockets modal, with chart visualizations above.</p>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover mb-0 text-center align-middle bg-white">
+                <thead class="text-white" style="background: linear-gradient(135deg, #0f4c81, #1976d2);">
+                    <tr>
+                        <th class="text-start ps-3">Work Group</th>
+                        <th>&lt;4 Hours</th>
+                        <th>4 to 24Hours</th>
+                        <th>24hour to 72hours</th>
+                        <th>&gt;3 days</th>
+                        <th class="bg-dark text-white">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-DATA</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>27</td>
+                            <td class="fw-bold bg-light text-primary">27</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-NW</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>82</td>
+                            <td class="fw-bold bg-light text-primary">82</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-CC</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>17</td>
+                            <td class="fw-bold bg-light text-primary">17</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-MS</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>11</td>
+                            <td class="fw-bold bg-light text-primary">11</td>
+                        </tr>
+                </tbody>
+                <tfoot class="fw-bold bg-light border-top">
+                    <tr>
+                        <td class="text-start ps-3 text-uppercase font-weight-bold">Total</td>
+                        <td class="text-primary fs-6">0</td>
+                        <td class="text-primary fs-6">0</td>
+                        <td class="text-primary fs-6">0</td>
+                        <td class="text-primary fs-6">137</td>
+                        <td class="text-white bg-primary fs-6">137</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+</main>
+
+            <footer b-z23fy4zdhm class="border-top bg-white">
+                <div b-z23fy4zdhm class="container py-3 d-flex justify-content-between align-items-center">
+                    <span b-z23fy4zdhm class="text-muted small">&copy; 2026 - AlarmSystem</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.appApiBase = '/api';
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script src="/js/site.js?v=UaRoscdjdIu4a9ODZAPyVfPowkHQ7K5P0cMQb2LqfCY"></script>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const chartData = {"ageLabels":["\u003C4 Hours","4 to 24 Hours","24 to 72 Hours","\u003E3 days"],"workGroups":["CEN-CSC-DATA","CEN-CSC-NW","CEN-CSC-CC","CEN-CSC-MS"],"ageMatrix":[[0,0,0,27],[0,0,0,82],[0,0,0,17],[0,0,0,11]],"workGroupTotals":[27,82,17,11],"slaExceededByWorkGroup":[24,72,15,11],"pendingWoByWorkGroup":[56,104,12,6],"slaStatus":[122,15],"ageTotals":[0,0,0,137],"workGroupPieLabels":["CEN-CSC-NW","CEN-CSC-DATA","CEN-CSC-CC","CEN-CSC-MS"],"workGroupPieData":[82,27,17,11]};
+
+        if (window.Chart) {
+            const ageColors = ['#1976d2', '#26a69a', '#fb8c00', '#d32f2f'];
+            const pieColors = ['#1976d2', '#2e7d32', '#fb8c00', '#8e24aa', '#00838f', '#d32f2f', '#78909c'];
+
+            new Chart(document.getElementById('slaPieChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['SLA Exceeded', 'Within SLA'],
+                    datasets: [{
+                        data: chartData.slaStatus,
+                        backgroundColor: ['#d32f2f', '#2e7d32'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('agePieChart'), {
+                type: 'pie',
+                data: {
+                    labels: chartData.ageLabels,
+                    datasets: [{
+                        data: chartData.ageTotals,
+                        backgroundColor: ageColors,
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            if (chartData.workGroupPieData.length > 0) {
+                new Chart(document.getElementById('workGroupPieChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: chartData.workGroupPieLabels,
+                        datasets: [{
+                            data: chartData.workGroupPieData,
+                            backgroundColor: pieColors,
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+            }
+
+            new Chart(document.getElementById('ageStackedBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: chartData.ageLabels.map((label, index) => ({
+                        label: label,
+                        data: chartData.ageMatrix.map(row => row[index]),
+                        backgroundColor: ageColors[index],
+                        borderRadius: 4
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { stacked: true, beginAtZero: true, ticks: { precision: 0 } },
+                        y: { stacked: true }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            new Chart(document.getElementById('pendingWoBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: [{
+                        label: 'Pending WO',
+                        data: chartData.pendingWoByWorkGroup,
+                        backgroundColor: '#00838f',
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            new Chart(document.getElementById('wgCompareBarChart'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.workGroups,
+                    datasets: [
+                        {
+                            label: 'Total Dockets',
+                            data: chartData.workGroupTotals,
+                            backgroundColor: '#1976d2',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'SLA Exceeded',
+                            data: chartData.slaExceededByWorkGroup,
+                            backgroundColor: '#d32f2f',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

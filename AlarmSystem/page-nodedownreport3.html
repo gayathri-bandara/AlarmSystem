@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Down Report - AlarmSystem</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=pt9pqkanF4mV0TDuxpltWRBUjRFmu5FYe4kuRfrZLAQ" />
+    <link rel="stylesheet" href="/AlarmSystem.styles.css?v=l6R0MrkDDFTLCC6oh2nQFA5134YPgJzx5GYDyv-gf2g" />
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+    
+</head>
+
+
+<body class="bg-light  has-sidebar">
+
+    <header b-z23fy4zdhm>
+        <nav b-z23fy4zdhm class="navbar navbar-expand-lg glass-nav">
+            <div b-z23fy4zdhm class="container">
+               <div b-z23fy4zdhm class="nav-left">
+
+        <button b-z23fy4zdhm id="sideMenuToggle"
+                class="btn btn-sm side-menu-toggle"
+                type="button"
+                aria-controls="mainSideMenu"
+                aria-expanded="false"
+                aria-label="Show menu"
+                title="Show menu">
+
+            <span b-z23fy4zdhm class="menu-icon">
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+            </span>
+
+        </button>
+
+    <a class="navbar-brand navbar-logo" href="/">
+
+        <img src="/img/slt-logo.svg" class="slt-logo-header" alt="SLTMobitel" />
+
+    </a>
+
+</div>
+
+<div b-z23fy4zdhm class="nav-center">
+
+    <h2 b-z23fy4zdhm class="brand-title">
+        AlarmSystem
+    </h2>
+
+    <div b-z23fy4zdhm class="brand-subtitle">
+        Network Monitoring Platform
+    </div>
+
+</div>
+
+                <button b-z23fy4zdhm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+                        aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-z23fy4zdhm class="navbar-toggler-icon"></span>
+                </button>
+
+                <div b-z23fy4zdhm class="collapse navbar-collapse" id="topNav">
+                    <ul b-z23fy4zdhm class="navbar-nav ms-auto align-items-lg-center">
+                            <li b-z23fy4zdhm class="nav-item me-3">
+                                <div b-z23fy4zdhm class="profile-card">
+                                    <div b-z23fy4zdhm class="profile-icon">
+                                        👤
+                                    </div>
+                                    <div b-z23fy4zdhm class="profile-info">
+                                        <div b-z23fy4zdhm class="profile-name">
+                                            Dev User
+                                        </div>
+                                        <div b-z23fy4zdhm class="profile-role">
+                                            Authenticated
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li b-z23fy4zdhm class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" title="Sign out of system" href="/Account/Logout">
+                                    <i b-z23fy4zdhm class="fa-solid fa-right-from-bracket"></i>
+                                    <span b-z23fy4zdhm>Logout</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-z23fy4zdhm class="app-shell with-sidebar">
+            <aside b-z23fy4zdhm id="mainSideMenu" class="side-menu" aria-label="Main menu">
+                <div b-z23fy4zdhm class="side-menu-title">Main menu</div>
+                <nav b-z23fy4zdhm class="side-menu-nav">
+                  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent "
+           href="#">
+            Dashboard
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander expanded"
+                type="button"
+                data-menu-toggle="dashboard-submenu"
+                aria-controls="dashboard-submenu"
+                aria-expanded="true">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="dashboard-submenu" class="side-submenu open">
+
+        <a class="side-sublink" href="/Home/AlarmDashboard">
+            Alarm Dashboard
+        </a>
+
+        <a class="side-sublink" href="/Home/Dashboard">
+            Other Operations
+        </a>
+
+    </div>
+
+</div>
+
+                    <div b-z23fy4zdhm class="side-link-group">
+                        <div b-z23fy4zdhm class="side-link-row">
+                            <a class="side-link side-link-parent " href="/Home/ViewData">
+                                View Data
+                            </a>
+                            <button b-z23fy4zdhm class="side-link-expander "
+                                    type="button"
+                                    data-menu-toggle="viewdata-submenu"
+                                    aria-controls="viewdata-submenu"
+                                    aria-expanded="false"
+                                    title="Toggle View Data menu">
+                                <span b-z23fy4zdhm aria-hidden="true">▾</span>
+                            </button>
+                        </div>
+
+                        <div b-z23fy4zdhm id="viewdata-submenu" class="side-submenu ">
+                            <a class="side-sublink " data-viewdata-section-key="realtime-alarms" href="/Home/RealtimeAlarm">
+                                Realtime Alarm
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-fault-oss" href="/Home/CustomerFaultOss">
+                                Customer Fault (OSS)
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-details" href="/Home/CustomerDetails">
+                                Customer Details
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="network-element-details" href="/Home/NetworkElementDetails">
+                                Network Element Details
+                            </a>
+                        </div>
+                    </div>
+
+
+
+<a class="side-link " href="/ManualEscalation">
+    Manual Escalations
+</a>
+<a class="side-link " href="/Alarm">
+    Alarms
+</a>
+
+<a class="side-link " href="/FaultDockets">
+    Fault-Dockets
+</a>
+
+<a class="side-link " href="/Inbox">
+    Inbox
+</a>
+
+<a class="side-link " href="/Views">
+    Views
+</a>
+
+
+<a class="side-link " href="/Home/ApiTester">
+    Starlink
+</a>
+
+<a class="side-link " href="/Links">
+    Links
+</a>
+
+<a class="side-link " href="/AlarmDelay">
+    Alarm Delays
+</a>
+
+<a class="side-link " href="/TroubleTicket">
+    Trouble Ticket
+</a>
+
+<a class="side-link " href="/Config">
+    Config
+</a>
+
+
+
+<div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent"
+           href="#">
+            Search
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander"
+                type="button"
+                data-menu-toggle="search-submenu"
+                aria-controls="search-submenu"
+                aria-expanded="false">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="search-submenu" class="side-submenu">
+
+        <a class="side-sublink" href="/CircuitId">
+            Search Circuit
+        </a>
+
+        <a class="side-sublink" href="/SearchByNode">
+            Search By Node Name
+        </a>
+
+    </div>
+
+</div>
+
+<a class="side-link" href="/PowerAlarm">
+    POWER ALARM
+</a>
+
+
+
+  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent" href="#">
+            Report
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander "
+                type="button"
+                data-menu-toggle="report-submenu"
+                aria-controls="report-submenu"
+                aria-expanded="false">
+            <span b-z23fy4zdhm>▾</span>
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="report-submenu" class="side-submenu ">
+
+        <a class="side-sublink" href="/TodayNodeDown">
+            Today Node Down
+        </a>
+
+        <a class="side-sublink" href="/SummaryCarrierFaults">
+            Summary Carrier Faults
+        </a>
+
+        <a class="side-sublink" href="/SummaryNetworkFaults">
+            Summary Network Faults
+        </a>
+
+        <a class="side-sublink" href="/NodeDownReport">
+            Node Down
+        </a>
+
+        <a class="side-sublink" href="/ACMainFailure">
+            AC Mains Failure
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryEngineer">
+            Alarm History Network Engineer
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryProvince">
+            Alarm History Provincewise
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryRegion">
+            Alarm History Regionwise
+        </a>
+
+        <a class="side-sublink" href="/Summary">
+            Summary
+        </a>
+
+        <a class="side-sublink" href="/Report/NodeDownReport">
+            CEA Port Report
+        </a>
+
+        <a class="side-sublink " href="/DailyEmailReport">
+            ✉ Daily Email Report
+        </a>
+
+    </div>
+
+</div>
+
+
+<a class="side-link" href="/RPBSummary">
+    RPB Summary
+</a>
+                </nav>
+            </aside>
+
+        <div b-z23fy4zdhm class="app-content">
+    <main b-z23fy4zdhm class="container-fluid py-4 px-3">
+    
+
+<style>
+
+.page-title{
+    color:#000066;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.filter-table{
+    margin-bottom:25px;
+}
+
+.grid{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.grid th{
+    background:#006699;
+    color:white;
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+.grid td{
+    border:1px solid #ccc;
+    padding:6px;
+}
+
+.form-control{
+    width:220px;
+}
+
+</style>
+
+<h2 class="page-title">
+    NODE DOWN REPORT
+</h2>
+
+<form method="get">
+
+<table class="filter-table">
+
+<tr>
+
+<td><b>FROM</b></td>
+
+<td>
+
+<input
+type="date"
+name="from"
+class="form-control"
+value="2026-11-09" />
+
+</td>
+
+<td><b>TO</b></td>
+
+<td>
+
+<input
+type="date"
+name="to"
+class="form-control"
+value="2026-11-09" />
+
+</td>
+
+</tr>
+
+<tr>
+
+<td><b>SELECT NW ENG</b></td>
+
+<td>
+
+<select
+name="nwEngineer"
+class="form-control">
+
+        <option selected>~ALL~</option>
+        <option>Eng-NW/CPN</option>
+        <option>Eng-NW/CPS</option>
+        <option>Eng-NW/EP</option>
+        <option>Eng-NW/NCP</option>
+        <option>Eng-NW/NP-1</option>
+        <option>Eng-NW/NP-2</option>
+        <option>Eng-NW/NWPE</option>
+        <option>Eng-NW/NWPW</option>
+        <option>Eng-NW/SAB</option>
+        <option>Eng-NW/SPE</option>
+        <option>Eng-NW/SPW</option>
+        <option>Eng-NW/UVA</option>
+        <option>Eng-NW/WPC-1</option>
+        <option>Eng-NW/WPC-2</option>
+        <option>Eng-NW/WPE</option>
+        <option>Eng-NW/WPN</option>
+        <option>Eng-NW/WPNE</option>
+        <option>Eng-NW/WPS</option>
+        <option>Eng-NW/WPSE</option>
+        <option>Eng-NW/WPSW</option>
+
+</select>
+
+</td>
+
+<td>
+
+<button
+class="btn btn-primary"
+type="submit">
+
+Search
+
+</button>
+
+</td>
+
+<td>
+
+
+</td>
+
+</tr>
+
+</table>
+
+<table class="grid">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>NODE</th>
+<th>FAULT</th>
+<th>FAULT TIME</th>
+<th>PLATFORM</th>
+<th>VENDOR</th>
+<th>STATUS</th>
+<th>CLOSE TIME</th>
+<th>ALARM TYPE</th>
+<th>SOURCE IP</th>
+<th>REGION</th>
+<th>PROVINCE</th>
+<th>NW ENG</th>
+<th>RTOM</th>
+<th>LEA CODE</th>
+<th>LEA NAME</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+
+</tbody>
+
+</table>
+
+</form>
+</main>
+
+            <footer b-z23fy4zdhm class="border-top bg-white">
+                <div b-z23fy4zdhm class="container py-3 d-flex justify-content-between align-items-center">
+                    <span b-z23fy4zdhm class="text-muted small">&copy; 2026 - AlarmSystem</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.appApiBase = '/api';
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script src="/js/site.js?v=UaRoscdjdIu4a9ODZAPyVfPowkHQ7K5P0cMQb2LqfCY"></script>
+
+
+    
+</body>
+</html>

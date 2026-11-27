@@ -1,0 +1,11361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLARITY FAULT-DOCKETS - AlarmSystem</title>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css?v=pt9pqkanF4mV0TDuxpltWRBUjRFmu5FYe4kuRfrZLAQ" />
+    <link rel="stylesheet" href="/AlarmSystem.styles.css?v=l6R0MrkDDFTLCC6oh2nQFA5134YPgJzx5GYDyv-gf2g" />
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    
+    <link rel="stylesheet" href="/css/fault-dockets.css?v=jBkDJkFHl_SsaFYcoVpb1fLS7W7B03WiPgciokHOsPE" />
+
+    
+</head>
+
+
+<body class="bg-light  has-sidebar">
+
+    <header b-z23fy4zdhm>
+        <nav b-z23fy4zdhm class="navbar navbar-expand-lg glass-nav">
+            <div b-z23fy4zdhm class="container">
+               <div b-z23fy4zdhm class="nav-left">
+
+        <button b-z23fy4zdhm id="sideMenuToggle"
+                class="btn btn-sm side-menu-toggle"
+                type="button"
+                aria-controls="mainSideMenu"
+                aria-expanded="false"
+                aria-label="Show menu"
+                title="Show menu">
+
+            <span b-z23fy4zdhm class="menu-icon">
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+                <span b-z23fy4zdhm></span>
+            </span>
+
+        </button>
+
+    <a class="navbar-brand navbar-logo" href="/">
+
+        <img src="/img/slt-logo.svg" class="slt-logo-header" alt="SLTMobitel" />
+
+    </a>
+
+</div>
+
+<div b-z23fy4zdhm class="nav-center">
+
+    <h2 b-z23fy4zdhm class="brand-title">
+        AlarmSystem
+    </h2>
+
+    <div b-z23fy4zdhm class="brand-subtitle">
+        Network Monitoring Platform
+    </div>
+
+</div>
+
+                <button b-z23fy4zdhm class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav"
+                        aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-z23fy4zdhm class="navbar-toggler-icon"></span>
+                </button>
+
+                <div b-z23fy4zdhm class="collapse navbar-collapse" id="topNav">
+                    <ul b-z23fy4zdhm class="navbar-nav ms-auto align-items-lg-center">
+                            <li b-z23fy4zdhm class="nav-item me-3">
+                                <div b-z23fy4zdhm class="profile-card">
+                                    <div b-z23fy4zdhm class="profile-icon">
+                                        👤
+                                    </div>
+                                    <div b-z23fy4zdhm class="profile-info">
+                                        <div b-z23fy4zdhm class="profile-name">
+                                            Dev User
+                                        </div>
+                                        <div b-z23fy4zdhm class="profile-role">
+                                            Authenticated
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li b-z23fy4zdhm class="nav-item">
+                                <a class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1.5 d-flex align-items-center gap-2" title="Sign out of system" href="/Account/Logout">
+                                    <i b-z23fy4zdhm class="fa-solid fa-right-from-bracket"></i>
+                                    <span b-z23fy4zdhm>Logout</span>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div b-z23fy4zdhm class="app-shell with-sidebar">
+            <aside b-z23fy4zdhm id="mainSideMenu" class="side-menu" aria-label="Main menu">
+                <div b-z23fy4zdhm class="side-menu-title">Main menu</div>
+                <nav b-z23fy4zdhm class="side-menu-nav">
+                  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent "
+           href="#">
+            Dashboard
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander expanded"
+                type="button"
+                data-menu-toggle="dashboard-submenu"
+                aria-controls="dashboard-submenu"
+                aria-expanded="true">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="dashboard-submenu" class="side-submenu open">
+
+        <a class="side-sublink" href="/Home/AlarmDashboard">
+            Alarm Dashboard
+        </a>
+
+        <a class="side-sublink" href="/Home/Dashboard">
+            Other Operations
+        </a>
+
+    </div>
+
+</div>
+
+                    <div b-z23fy4zdhm class="side-link-group">
+                        <div b-z23fy4zdhm class="side-link-row">
+                            <a class="side-link side-link-parent " href="/Home/ViewData">
+                                View Data
+                            </a>
+                            <button b-z23fy4zdhm class="side-link-expander "
+                                    type="button"
+                                    data-menu-toggle="viewdata-submenu"
+                                    aria-controls="viewdata-submenu"
+                                    aria-expanded="false"
+                                    title="Toggle View Data menu">
+                                <span b-z23fy4zdhm aria-hidden="true">▾</span>
+                            </button>
+                        </div>
+
+                        <div b-z23fy4zdhm id="viewdata-submenu" class="side-submenu ">
+                            <a class="side-sublink " data-viewdata-section-key="realtime-alarms" href="/Home/RealtimeAlarm">
+                                Realtime Alarm
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-fault-oss" href="/Home/CustomerFaultOss">
+                                Customer Fault (OSS)
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="customer-details" href="/Home/CustomerDetails">
+                                Customer Details
+                            </a>
+                            <a class="side-sublink " data-viewdata-section-key="network-element-details" href="/Home/NetworkElementDetails">
+                                Network Element Details
+                            </a>
+                        </div>
+                    </div>
+
+
+
+<a class="side-link " href="/ManualEscalation">
+    Manual Escalations
+</a>
+<a class="side-link " href="/Alarm">
+    Alarms
+</a>
+
+<a class="side-link active" href="/FaultDockets">
+    Fault-Dockets
+</a>
+
+<a class="side-link " href="/Inbox">
+    Inbox
+</a>
+
+<a class="side-link " href="/Views">
+    Views
+</a>
+
+
+<a class="side-link " href="/Home/ApiTester">
+    Starlink
+</a>
+
+<a class="side-link " href="/Links">
+    Links
+</a>
+
+<a class="side-link " href="/AlarmDelay">
+    Alarm Delays
+</a>
+
+<a class="side-link " href="/TroubleTicket">
+    Trouble Ticket
+</a>
+
+<a class="side-link " href="/Config">
+    Config
+</a>
+
+
+
+<div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent"
+           href="#">
+            Search
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander"
+                type="button"
+                data-menu-toggle="search-submenu"
+                aria-controls="search-submenu"
+                aria-expanded="false">
+
+            <span b-z23fy4zdhm>▾</span>
+
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="search-submenu" class="side-submenu">
+
+        <a class="side-sublink" href="/CircuitId">
+            Search Circuit
+        </a>
+
+        <a class="side-sublink" href="/SearchByNode">
+            Search By Node Name
+        </a>
+
+    </div>
+
+</div>
+
+<a class="side-link" href="/PowerAlarm">
+    POWER ALARM
+</a>
+
+
+
+  <div b-z23fy4zdhm class="side-link-group">
+
+    <div b-z23fy4zdhm class="side-link-row">
+
+        <a b-z23fy4zdhm class="side-link side-link-parent" href="#">
+            Report
+        </a>
+
+        <button b-z23fy4zdhm class="side-link-expander "
+                type="button"
+                data-menu-toggle="report-submenu"
+                aria-controls="report-submenu"
+                aria-expanded="false">
+            <span b-z23fy4zdhm>▾</span>
+        </button>
+
+    </div>
+
+    <div b-z23fy4zdhm id="report-submenu" class="side-submenu ">
+
+        <a class="side-sublink" href="/TodayNodeDown">
+            Today Node Down
+        </a>
+
+        <a class="side-sublink" href="/SummaryCarrierFaults">
+            Summary Carrier Faults
+        </a>
+
+        <a class="side-sublink" href="/SummaryNetworkFaults">
+            Summary Network Faults
+        </a>
+
+        <a class="side-sublink" href="/NodeDownReport">
+            Node Down
+        </a>
+
+        <a class="side-sublink" href="/ACMainFailure">
+            AC Mains Failure
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryEngineer">
+            Alarm History Network Engineer
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryProvince">
+            Alarm History Provincewise
+        </a>
+
+        <a class="side-sublink" href="/AlarmHistoryRegion">
+            Alarm History Regionwise
+        </a>
+
+        <a class="side-sublink" href="/Summary">
+            Summary
+        </a>
+
+        <a class="side-sublink" href="/Report/NodeDownReport">
+            CEA Port Report
+        </a>
+
+        <a class="side-sublink " href="/DailyEmailReport">
+            ✉ Daily Email Report
+        </a>
+
+    </div>
+
+</div>
+
+
+<a class="side-link" href="/RPBSummary">
+    RPB Summary
+</a>
+                </nav>
+            </aside>
+
+        <div b-z23fy4zdhm class="app-content">
+    <main b-z23fy4zdhm class="container-fluid py-4 px-3">
+    
+
+
+<div class="fault-page">
+
+    <!-- HERO -->
+
+    <div class="fault-hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-left">
+
+                <div class="hero-icon">
+
+                    <i class="fas fa-network-wired"></i>
+
+                </div>
+
+                <div>
+
+                    <h1>Clarity Fault Dockets</h1>
+
+                    <p>
+                        Customer Fault Monitoring & SLA Dashboard
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="hero-search">
+
+                <i class="fas fa-search"></i>
+
+                <input id="searchInput"
+                       type="text"
+                       placeholder="Search Customer / CIR / Reference..." />
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SUMMARY -->
+
+    <div class="summary-grid">
+
+        <div class="summary-card blue">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-ticket-alt"></i>
+
+            </div>
+
+            <div>
+
+                <h2>137</h2>
+
+                <span>Total Dockets</span>
+
+            </div>
+
+        </div>
+
+        <div class="summary-card red">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-exclamation-triangle"></i>
+
+            </div>
+
+            <div>
+
+                <h2>122</h2>
+
+                <span>SLA Exceeded</span>
+
+            </div>
+
+        </div>
+
+        <div class="summary-card green">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-users"></i>
+
+            </div>
+
+            <div>
+
+                <h2>4</h2>
+
+                <span>Work Groups</span>
+
+            </div>
+
+        </div>
+
+        <div class="summary-card orange">
+
+            <div class="summary-icon">
+
+                <i class="fas fa-clipboard-list"></i>
+
+            </div>
+
+            <div>
+
+                <h2>178</h2>
+
+                <span>Pending WO</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FILTER PANEL -->
+
+    <div class="filter-panel">
+
+        <form method="get" action="/FaultDockets">
+
+            <div class="filter-grid">
+
+                <div class="filter-box">
+
+                    <label>Select Type</label>
+
+                    <select name="customerType"
+                            class="form-select"
+                            onchange="this.form.submit()">
+
+                                <option selected>~ALL~</option>
+                                <option>CORPORATE-LARGE &amp; VERY LARGE</option>
+                                <option>CORPORATE-SME</option>
+                                <option>ENTERPRISE-LARGE</option>
+                                <option>GOVERNMENT OFFICIAL</option>
+                                <option>GOVERNMENT ORGANIZATION</option>
+                                <option>INDIVIDUAL-BUSINESS</option>
+                                <option>INTERNATIONAL-OPERATOR</option>
+                                <option>REGIONAL-SME</option>
+                                <option>REGISTERED-MICRO BIZ</option>
+                                <option>SLT-OFFICE</option>
+                                <option>SMALL BUSINESS</option>
+                                <option>WHOLESALE RE-SELLER</option>
+                                <option>WHOLESALE-OPERATOR</option>
+
+                    </select>
+
+                </div>
+
+                <div class="filter-box">
+
+                    <label>Select Work Group</label>
+
+                    <select name="workGroup"
+                            class="form-select"
+                            onchange="this.form.submit()">
+
+                                <option selected>~ALL~</option>
+                                <option>CEN-CSC-NW</option>
+                                <option>CEN-CSC-DATA</option>
+                                <option>CEN-CSC-CC</option>
+                                <option>CEN-CSC-MS</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- PART 2 CONTINUES BELOW -->
+
+        <!-- ACTION BUTTONS -->
+
+    <div class="action-panel">
+
+        <button type="button"
+                class="action-btn teal"
+                data-bs-toggle="modal"
+                data-bs-target="#summaryTableModal">
+
+            <i class="fas fa-table"></i>
+
+            Summary Table
+
+        </button>
+
+        <a class="action-btn cyan" href="/FaultDockets/SummaryDashboard?customerType=~ALL~&amp;workGroup=~ALL~">
+
+            <i class="fas fa-chart-pie"></i>
+
+            Summary Dashboard
+
+        </a>
+
+        <a class="action-btn blue" href="/WorkOrders">
+
+            <i class="fas fa-clipboard-list"></i>
+
+            Work Orders
+
+        </a>
+
+        <a class="action-btn purple" href="/Events">
+
+            <i class="fas fa-calendar-alt"></i>
+
+            Events
+
+        </a>
+
+        <a class="action-btn orange" href="/EventNew">
+
+            <i class="fas fa-calendar-plus"></i>
+
+            Events New
+
+        </a>
+
+        <a class="action-btn indigo" href="/CarrierBusinessSummary">
+
+            <i class="fas fa-chart-line"></i>
+
+            Carrier Business Summary
+
+        </a>
+
+        <a class="action-btn green" href="/FaultDockets/Export">
+
+            <i class="fas fa-file-excel"></i>
+
+            Export Excel
+
+        </a>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <div>
+
+                <h3>Customer Fault Dockets</h3>
+
+                <p>Real-time customer fault monitoring</p>
+
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table premium-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>REF</th>
+                        <th>CUSTOMER</th>
+                        <th>CUSTOMER NAME</th>
+                        <th>CIR NAME</th>
+                        <th>CIR TYPE</th>
+                        <th>REPORTED</th>
+                        <th>HOURS</th>
+                        <th>SLA</th>
+                        <th>ACCESS</th>
+                        <th>PENDING WO</th>
+                        <th>WORK GROUP</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="faultTable">
+
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769167">
+
+                46769167
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Kuruwita Multipurpose Cooperative Society
+
+        </td>
+
+        <td>
+
+            D50638
+
+        </td>
+
+        <td>
+
+            R-RN / KR / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:39:24 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                    24 x 7 (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769114">
+
+                46769114
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            National Savings Bank (Wan)
+
+        </td>
+
+        <td>
+
+            E1117052
+
+        </td>
+
+        <td>
+
+            R-KI / KDW / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:31:47 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769070">
+
+                46769070
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            People S Leasing &amp; Finance Plc
+
+        </td>
+
+        <td>
+
+            E1113443
+
+        </td>
+
+        <td>
+
+            R-TC / TC / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:25:38 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769057">
+
+                46769057
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Peoples Bank
+
+        </td>
+
+        <td>
+
+            D94854
+
+        </td>
+
+        <td>
+
+            R-MB / MB / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:23:40 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769044">
+
+                46769044
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Mainframe (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1123501
+
+        </td>
+
+        <td>
+
+            R-GL / HAR / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:21:55 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46769020">
+
+                46769020
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            CHAS P HAYLEYS LTD
+
+        </td>
+
+        <td>
+
+            D58685
+
+        </td>
+
+        <td>
+
+            R-CW / MX / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:18:53 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768955">
+
+                46768955
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D76186
+
+        </td>
+
+        <td>
+
+            R-NG / BDL / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:11:38 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768938">
+
+                46768938
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D62485
+
+        </td>
+
+        <td>
+
+            R-NG / MNG / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:10:00 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768947">
+
+                46768947
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Ceylinco General Insurance Ltd
+
+        </td>
+
+        <td>
+
+            MS17276
+
+        </td>
+
+        <td>
+
+            R-KY / KY / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:09:58 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768913">
+
+                46768913
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            D Samson &amp; Sons (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1106657
+
+        </td>
+
+        <td>
+
+            R-ND / ND / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:05:31 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768871">
+
+                46768871
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            D Samson &amp; Sons (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1125257(N)
+
+        </td>
+
+        <td>
+
+            R-AG / KOG / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/18/2026 2:01:48 PM
+
+        </td>
+
+        <td>
+
+            1245
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768853">
+
+                46768853
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Credit  - IDC Services
+
+        </td>
+
+        <td>
+
+            D53615
+
+        </td>
+
+        <td>
+
+            R-RN / KHA / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:57:23 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768763">
+
+                46768763
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            D Samson &amp; Sons (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1106834
+
+        </td>
+
+        <td>
+
+            R-MD / SI / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:42:29 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            4
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768662">
+
+                46768662
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Merchant Bank Of Sri Lanka Plc
+
+        </td>
+
+        <td>
+
+            E1115857
+
+        </td>
+
+        <td>
+
+            R-BC / BC / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:26:17 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768651">
+
+                46768651
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Candy Delights Limited
+
+        </td>
+
+        <td>
+
+            D64611
+
+        </td>
+
+        <td>
+
+            R-WT / JL / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:25:04 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768604">
+
+                46768604
+
+            </a>
+
+        </td>
+
+        <td>
+
+            INTERNATIONAL-OPERATOR
+
+        </td>
+
+        <td>
+
+            Bharti Airtel Limited
+
+        </td>
+
+        <td>
+
+            D69909
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-GLOBAL VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:17:24 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768584">
+
+                46768584
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC LIFE INSURANCE PLC
+
+        </td>
+
+        <td>
+
+            E1109051
+
+        </td>
+
+        <td>
+
+            R-KX / KX / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:15:50 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768540">
+
+                46768540
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            C/P Pragdhana Co-Op Society Ltd
+
+        </td>
+
+        <td>
+
+            E1103551
+
+        </td>
+
+        <td>
+
+            R-GP / KAD / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:09:38 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768548">
+
+                46768548
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Aqua Trading Global (Private) Limited
+
+        </td>
+
+        <td>
+
+            E1104476
+
+        </td>
+
+        <td>
+
+            R-KX / BAT / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:08:12 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768495">
+
+                46768495
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            CO-OPERATIVE INSURANCE COMPANY PLC
+
+        </td>
+
+        <td>
+
+            MS22260
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/18/2026 1:01:45 PM
+
+        </td>
+
+        <td>
+
+            1246
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768467">
+
+                46768467
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC SUPERMARKETS (PRIVATE) LIMITED
+
+        </td>
+
+        <td>
+
+            E1101966
+
+        </td>
+
+        <td>
+
+            R-KX / BAT / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 12:56:10 PM
+
+        </td>
+
+        <td>
+
+            1247
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768417">
+
+                46768417
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            CRYSTAL MARTIN CEYLON (PVT) LTD
+
+        </td>
+
+        <td>
+
+            E1120479
+
+        </td>
+
+        <td>
+
+            R-NTB / RAN / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/18/2026 12:53:17 PM
+
+        </td>
+
+        <td>
+
+            1247
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768086">
+
+                46768086
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Fab Foods (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            D81980
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 12:16:15 PM
+
+        </td>
+
+        <td>
+
+            1247
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46768075">
+
+                46768075
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            MELSTA TECHNOLOGIES (PVT) LTD
+
+        </td>
+
+        <td>
+
+            D88772
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 12:14:03 PM
+
+        </td>
+
+        <td>
+
+            1247
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767988">
+
+                46767988
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Hatton National Bank Plc
+
+        </td>
+
+        <td>
+
+            D74395
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 12:05:13 PM
+
+        </td>
+
+        <td>
+
+            1247
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767908">
+
+                46767908
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            DR INDUSTRIES (PVT) LTD
+
+        </td>
+
+        <td>
+
+            PML2577767
+
+        </td>
+
+        <td>
+
+            R-GP / PML / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 11:58:41 AM
+
+        </td>
+
+        <td>
+
+            1248
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767909">
+
+                46767909
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Lolc Holdings Plc
+
+        </td>
+
+        <td>
+
+            D73227
+
+        </td>
+
+        <td>
+
+            R-BW / WM / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 11:58:38 AM
+
+        </td>
+
+        <td>
+
+            1248
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767890">
+
+                46767890
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Lolc Holdings Plc
+
+        </td>
+
+        <td>
+
+            E1109626
+
+        </td>
+
+        <td>
+
+            R-GL / GL / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 11:56:43 AM
+
+        </td>
+
+        <td>
+
+            1248
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767630">
+
+                46767630
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Hatton National Bank Plc
+
+        </td>
+
+        <td>
+
+            MS22574
+
+        </td>
+
+        <td>
+
+            R-GQ / KWL / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/18/2026 11:26:00 AM
+
+        </td>
+
+        <td>
+
+            1248
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767482">
+
+                46767482
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC LIFE INSURANCE PLC
+
+        </td>
+
+        <td>
+
+            E1104662
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/18/2026 11:07:13 AM
+
+        </td>
+
+        <td>
+
+            1248
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767363">
+
+                46767363
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Port City BPO Pvt Ltd
+
+        </td>
+
+        <td>
+
+            E1125151
+
+        </td>
+
+        <td>
+
+            R-ND / ND / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:56:33 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767187">
+
+                46767187
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Hatton National Bank Plc
+
+        </td>
+
+        <td>
+
+            MS22093
+
+        </td>
+
+        <td>
+
+            R-NG / NG / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:36:49 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46767134">
+
+                46767134
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Jaykay Marketing Services (Pvt) Ltd.
+
+        </td>
+
+        <td>
+
+            D98544
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-BIL
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:30:43 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            4
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766971">
+
+                46766971
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Mbsl Insurance Co.Ltd
+
+        </td>
+
+        <td>
+
+            E1101776
+
+        </td>
+
+        <td>
+
+            R-AD / AD / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:16:07 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766950">
+
+                46766950
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Registration Of Persons Department
+
+        </td>
+
+        <td>
+
+            D67155
+
+        </td>
+
+        <td>
+
+            R-MB / MB / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:14:53 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766910">
+
+                46766910
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Lanka Sathosa Limited
+
+        </td>
+
+        <td>
+
+            D73980
+
+        </td>
+
+        <td>
+
+            R-GP / TP / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:11:11 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766869">
+
+                46766869
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            NATIONAL DEVELOPMENT BANK PLC
+
+        </td>
+
+        <td>
+
+            D98529
+
+        </td>
+
+        <td>
+
+            R-MD / SI / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/18/2026 10:01:15 AM
+
+        </td>
+
+        <td>
+
+            1249
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER-UTP
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766697">
+
+                46766697
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Mobitel (Pvt) Limited
+
+        </td>
+
+        <td>
+
+            D65763
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:50:09 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766684">
+
+                46766684
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Mobitel (Pvt) Limited
+
+        </td>
+
+        <td>
+
+            E1108718
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:48:49 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766526">
+
+                46766526
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            WIJAYA GROUP (PVT) LTD
+
+        </td>
+
+        <td>
+
+            D95033
+
+        </td>
+
+        <td>
+
+            R-MT / DB / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:33:45 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766387">
+
+                46766387
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            To CEB
+
+        </td>
+
+        <td>
+
+            D55519
+
+        </td>
+
+        <td>
+
+            R-HK / WEL / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:20:35 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766372">
+
+                46766372
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Eheliyagoda Multipurpose Corporative Society
+
+        </td>
+
+        <td>
+
+            D84262
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / IDC-VIRTUAL HOSTING
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:19:51 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766373">
+
+                46766373
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            To CEB
+
+        </td>
+
+        <td>
+
+            D55514
+
+        </td>
+
+        <td>
+
+            R-HK / KPT / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:19:02 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46766344">
+
+                46766344
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            CEYLON TOBACCO COMPANY PLC
+
+        </td>
+
+        <td>
+
+            E1123754
+
+        </td>
+
+        <td>
+
+            R-NW / WTM / D-E NET ACCESS
+
+        </td>
+
+        <td>
+
+            9/18/2026 9:14:18 AM
+
+        </td>
+
+        <td>
+
+            1250
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46765493">
+
+                46765493
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Dialog Broadband Networks Pvt Ltd.
+
+        </td>
+
+        <td>
+
+            D86349
+
+        </td>
+
+        <td>
+
+            R-GQ / GQ / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/18/2026 4:59:48 AM
+
+        </td>
+
+        <td>
+
+            1255
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46765187">
+
+                46765187
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Leisure Sports Holdings
+
+        </td>
+
+        <td>
+
+            D92072
+
+        </td>
+
+        <td>
+
+            R-MH / MH / D-ENT PEO TV
+
+        </td>
+
+        <td>
+
+            9/17/2026 9:18:36 PM
+
+        </td>
+
+        <td>
+
+            1262
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46764760">
+
+                46764760
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            N D C Exports
+
+        </td>
+
+        <td>
+
+            D46957
+
+        </td>
+
+        <td>
+
+            R-KG / KG / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 7:24:04 PM
+
+        </td>
+
+        <td>
+
+            1264
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46764083">
+
+                46764083
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Port City BPO Pvt Ltd
+
+        </td>
+
+        <td>
+
+            E1122777
+
+        </td>
+
+        <td>
+
+            R-MD / SI / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 4:48:17 PM
+
+        </td>
+
+        <td>
+
+            1267
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46764069">
+
+                46764069
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Sarvodaya Development Finance PLC
+
+        </td>
+
+        <td>
+
+            0112266699
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-IP ENDPOINT
+
+        </td>
+
+        <td>
+
+            9/17/2026 4:45:04 PM
+
+        </td>
+
+        <td>
+
+            1267
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46763447">
+
+                46763447
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Port City BPO Pvt Ltd
+
+        </td>
+
+        <td>
+
+            E1117266
+
+        </td>
+
+        <td>
+
+            R-HK / HAV / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 2:56:52 PM
+
+        </td>
+
+        <td>
+
+            1269
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46763425">
+
+                46763425
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            MAHINDRA IDEAL FINANCE LTD
+
+        </td>
+
+        <td>
+
+            E1104970
+
+        </td>
+
+        <td>
+
+            R-HT / HT / D-ENT WIFI
+
+        </td>
+
+        <td>
+
+            9/17/2026 2:46:43 PM
+
+        </td>
+
+        <td>
+
+            1269
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46763369">
+
+                46763369
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Leisure Sports Holdings
+
+        </td>
+
+        <td>
+
+            D86862
+
+        </td>
+
+        <td>
+
+            R-HK / KPT / D-ENT PEO TV
+
+        </td>
+
+        <td>
+
+            9/17/2026 2:46:09 PM
+
+        </td>
+
+        <td>
+
+            1269
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46763303">
+
+                46763303
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Imo Chicken &amp; Agro (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1123927
+
+        </td>
+
+        <td>
+
+            R-NTB / MI / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 2:35:18 PM
+
+        </td>
+
+        <td>
+
+            1269
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46763310">
+
+                46763310
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Leisure Sports Holdings
+
+        </td>
+
+        <td>
+
+            D86859
+
+        </td>
+
+        <td>
+
+            R-HK / KPT / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 2:34:43 PM
+
+        </td>
+
+        <td>
+
+            1269
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762893">
+
+                46762893
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            TIQRI SOFTWARE PTE LTD
+
+        </td>
+
+        <td>
+
+            E1107764
+
+        </td>
+
+        <td>
+
+            R-MD / SI / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 1:36:47 PM
+
+        </td>
+
+        <td>
+
+            1270
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762730">
+
+                46762730
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Sri Lanka Bureau Of Foreign Employment
+
+        </td>
+
+        <td>
+
+            E1107842
+
+        </td>
+
+        <td>
+
+            R-GL / GL / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 1:12:49 PM
+
+        </td>
+
+        <td>
+
+            1270
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762641">
+
+                46762641
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            MAHINDRA IDEAL FINANCE LTD
+
+        </td>
+
+        <td>
+
+            E1113098
+
+        </td>
+
+        <td>
+
+            R-MRG / MRG / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/17/2026 1:01:13 PM
+
+        </td>
+
+        <td>
+
+            1270
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762370">
+
+                46762370
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            HIRDARAMANI INTERNATIONAL EXPORTS PVT LTD
+
+        </td>
+
+        <td>
+
+            E1121566
+
+        </td>
+
+        <td>
+
+            R-ND / MHG / D-BIL
+
+        </td>
+
+        <td>
+
+            9/17/2026 12:25:03 PM
+
+        </td>
+
+        <td>
+
+            1271
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762365">
+
+                46762365
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            HIRDARAMANI INTERNATIONAL EXPORTS PVT LTD
+
+        </td>
+
+        <td>
+
+            D93849
+
+        </td>
+
+        <td>
+
+            R-ND / MHG / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 12:24:13 PM
+
+        </td>
+
+        <td>
+
+            1271
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762354">
+
+                46762354
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            HIRDARAMANI INTERNATIONAL EXPORTS PVT LTD
+
+        </td>
+
+        <td>
+
+            D93848
+
+        </td>
+
+        <td>
+
+            R-ND / MHG / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 12:21:38 PM
+
+        </td>
+
+        <td>
+
+            1271
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762306">
+
+                46762306
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Sri Lanka Institute Of Development Administration
+
+        </td>
+
+        <td>
+
+            E1111669
+
+        </td>
+
+        <td>
+
+            R-HK / HK / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/17/2026 12:17:56 PM
+
+        </td>
+
+        <td>
+
+            1271
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46762249">
+
+                46762249
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Tokyo Cement Company Lanka Plc
+
+        </td>
+
+        <td>
+
+            D72746
+
+        </td>
+
+        <td>
+
+            R-BD / MYN / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 12:12:01 PM
+
+        </td>
+
+        <td>
+
+            1271
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761865">
+
+                46761865
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            SRI LANKA INSURANCE COPORATION LTD
+
+        </td>
+
+        <td>
+
+            D70991
+
+        </td>
+
+        <td>
+
+            R-RM / MV / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 11:27:37 AM
+
+        </td>
+
+        <td>
+
+            1272
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761513">
+
+                46761513
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Abans PLC
+
+        </td>
+
+        <td>
+
+            E1100489
+
+        </td>
+
+        <td>
+
+            R-HO / HO / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/17/2026 10:48:06 AM
+
+        </td>
+
+        <td>
+
+            1273
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761481">
+
+                46761481
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            WORLD VISION LANKA
+
+        </td>
+
+        <td>
+
+            D74291
+
+        </td>
+
+        <td>
+
+            R-KO / KO / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 10:47:21 AM
+
+        </td>
+
+        <td>
+
+            1273
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761315">
+
+                46761315
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Vallibel Finance Plc
+
+        </td>
+
+        <td>
+
+            E1107476
+
+        </td>
+
+        <td>
+
+            R-BD / MYN / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 10:26:58 AM
+
+        </td>
+
+        <td>
+
+            1273
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761231">
+
+                46761231
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Municipal Council
+
+        </td>
+
+        <td>
+
+            E1110885
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / IDC-VIRTUAL HOSTING
+
+        </td>
+
+        <td>
+
+            9/17/2026 10:18:48 AM
+
+        </td>
+
+        <td>
+
+            1273
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46761230">
+
+                46761230
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Bank Of Ceylon
+
+        </td>
+
+        <td>
+
+            D47767
+
+        </td>
+
+        <td>
+
+            R-KY / MMN / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 10:10:57 AM
+
+        </td>
+
+        <td>
+
+            1273
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46759875">
+
+                46759875
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Tata Communications Lanka Limited
+
+        </td>
+
+        <td>
+
+            D69229
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-EDL
+
+        </td>
+
+        <td>
+
+            9/17/2026 3:08:19 AM
+
+        </td>
+
+        <td>
+
+            1280
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46759852">
+
+                46759852
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Mobitel (Pvt) Limited
+
+        </td>
+
+        <td>
+
+            D86380
+
+        </td>
+
+        <td>
+
+            R-GQ / UDT / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/17/2026 1:12:29 AM
+
+        </td>
+
+        <td>
+
+            1282
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46759581">
+
+                46759581
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE-OPERATOR
+
+        </td>
+
+        <td>
+
+            ORANGE BUSINESS TELECOMMUNICATIONS SERVICES LIMITED
+
+        </td>
+
+        <td>
+
+            D88719
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-GBDL
+
+        </td>
+
+        <td>
+
+            9/16/2026 9:08:41 PM
+
+        </td>
+
+        <td>
+
+            1286
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            CUSTOMER-OWN
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46758938">
+
+                46758938
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Hatton National Bank Plc
+
+        </td>
+
+        <td>
+
+            E1121422
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/16/2026 6:20:19 PM
+
+        </td>
+
+        <td>
+
+            1289
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER-UTP
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46758806">
+
+                46758806
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Lolc Technologies Ltd
+
+        </td>
+
+        <td>
+
+            E1104432
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/16/2026 5:44:32 PM
+
+        </td>
+
+        <td>
+
+            1290
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46758800">
+
+                46758800
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGISTERED-MICRO BIZ
+
+        </td>
+
+        <td>
+
+            Top Mountain Resort
+
+        </td>
+
+        <td>
+
+            PBIZ0572237145
+
+        </td>
+
+        <td>
+
+            R-BW / DYT / D-PEO TV BIZ
+
+        </td>
+
+        <td>
+
+            9/16/2026 5:43:29 PM
+
+        </td>
+
+        <td>
+
+            1290
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46758267">
+
+                46758267
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Modern Mark Development Limited
+
+        </td>
+
+        <td>
+
+            MS21440
+
+        </td>
+
+        <td>
+
+            R-MD / SI / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/16/2026 3:55:00 PM
+
+        </td>
+
+        <td>
+
+            1292
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46757167">
+
+                46757167
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC SUPERMARKETS (PRIVATE) LIMITED
+
+        </td>
+
+        <td>
+
+            D96824
+
+        </td>
+
+        <td>
+
+            R-KX / BAT / D-ENT WIFI
+
+        </td>
+
+        <td>
+
+            9/16/2026 1:13:51 PM
+
+        </td>
+
+        <td>
+
+            1294
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46757011">
+
+                46757011
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            CENTRAL HOSPITAL LTD
+
+        </td>
+
+        <td>
+
+            E1104112
+
+        </td>
+
+        <td>
+
+            R-MD / MD / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/16/2026 12:54:00 PM
+
+        </td>
+
+        <td>
+
+            1295
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46756599">
+
+                46756599
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Airport &amp; Aviation Services (Sri Lanka) (private) Limited
+
+        </td>
+
+        <td>
+
+            E1122938
+
+        </td>
+
+        <td>
+
+            R-HB / HB / D-EDL
+
+        </td>
+
+        <td>
+
+            9/16/2026 12:03:37 PM
+
+        </td>
+
+        <td>
+
+            1295
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46756183">
+
+                46756183
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            MUSLIM COMMERCIAL BANK LTD
+
+        </td>
+
+        <td>
+
+            E1108320
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/16/2026 11:10:49 AM
+
+        </td>
+
+        <td>
+
+            1296
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46756074">
+
+                46756074
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Fairfirst Insurance Limited
+
+        </td>
+
+        <td>
+
+            E1121828
+
+        </td>
+
+        <td>
+
+            R-KLY / KLY / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/16/2026 10:59:23 AM
+
+        </td>
+
+        <td>
+
+            1297
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46755747">
+
+                46755747
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            HIRDARAMANI INTERNATIONAL EXPORTS PVT LTD
+
+        </td>
+
+        <td>
+
+            D93891
+
+        </td>
+
+        <td>
+
+            R-ND / MHG / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/16/2026 10:27:14 AM
+
+        </td>
+
+        <td>
+
+            1297
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46755038">
+
+                46755038
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            CENTRAL FINANCE COMPANY PLC
+
+        </td>
+
+        <td>
+
+            E1109877
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / IDC-VIRTUAL HOSTING
+
+        </td>
+
+        <td>
+
+            9/16/2026 9:18:05 AM
+
+        </td>
+
+        <td>
+
+            1298
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46754750">
+
+                46754750
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            TOYOTA LANKA (PVT) LTD
+
+        </td>
+
+        <td>
+
+            D43288
+
+        </td>
+
+        <td>
+
+            R-KI / KDW / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/16/2026 8:45:40 AM
+
+        </td>
+
+        <td>
+
+            1299
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46753110">
+
+                46753110
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D76183
+
+        </td>
+
+        <td>
+
+            R-WT / RG / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/15/2026 6:02:36 PM
+
+        </td>
+
+        <td>
+
+            1313
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46751970">
+
+                46751970
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            SLIIT UNI (GUARANTEE) LIMITED
+
+        </td>
+
+        <td>
+
+            MS20927
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/15/2026 2:57:33 PM
+
+        </td>
+
+        <td>
+
+            1317
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46751418">
+
+                46751418
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC LIFE INSURANCE PLC
+
+        </td>
+
+        <td>
+
+            E1109907
+
+        </td>
+
+        <td>
+
+            R-GL / GL / D-ENT WIFI
+
+        </td>
+
+        <td>
+
+            9/15/2026 1:39:30 PM
+
+        </td>
+
+        <td>
+
+            1318
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46751163">
+
+                46751163
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            CEYLINCO INSURANCE CO LTD
+
+        </td>
+
+        <td>
+
+            E1109523
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/15/2026 1:08:34 PM
+
+        </td>
+
+        <td>
+
+            1318
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46751150">
+
+                46751150
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Ceylinco General Insurance Ltd
+
+        </td>
+
+        <td>
+
+            MS17074
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/15/2026 1:06:27 PM
+
+        </td>
+
+        <td>
+
+            1318
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46750782">
+
+                46750782
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Reckitt Benckiser (Lanka) Ltd
+
+        </td>
+
+        <td>
+
+            D88288
+
+        </td>
+
+        <td>
+
+            R-HK / HK / D-BIL
+
+        </td>
+
+        <td>
+
+            9/15/2026 12:26:50 PM
+
+        </td>
+
+        <td>
+
+            1319
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46749474">
+
+                46749474
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Information Communication Technology Agency (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1125369
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-BIL
+
+        </td>
+
+        <td>
+
+            9/15/2026 10:14:16 AM
+
+        </td>
+
+        <td>
+
+            1321
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46746719">
+
+                46746719
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            People S Leasing &amp; Finance Plc
+
+        </td>
+
+        <td>
+
+            E1113576
+
+        </td>
+
+        <td>
+
+            R-MH / MH / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/14/2026 6:41:03 PM
+
+        </td>
+
+        <td>
+
+            1337
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46745954">
+
+                46745954
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            Port City BPO Pvt Ltd
+
+        </td>
+
+        <td>
+
+            E1123499
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-BIL
+
+        </td>
+
+        <td>
+
+            9/14/2026 4:10:00 PM
+
+        </td>
+
+        <td>
+
+            1339
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46745366">
+
+                46745366
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Ministry Of Development Rehabilitation, Reconstruction
+
+        </td>
+
+        <td>
+
+            E1105622
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/14/2026 3:01:55 PM
+
+        </td>
+
+        <td>
+
+            1340
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46742611">
+
+                46742611
+
+            </a>
+
+        </td>
+
+        <td>
+
+            WHOLESALE RE-SELLER
+
+        </td>
+
+        <td>
+
+            Dialog Broadband Networks Pvt Ltd.
+
+        </td>
+
+        <td>
+
+            D92896
+
+        </td>
+
+        <td>
+
+            R-AP / IN / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            9/14/2026 9:46:42 AM
+
+        </td>
+
+        <td>
+
+            1346
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46742120">
+
+                46742120
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC B P O SERVICES (PVT) LTD
+
+        </td>
+
+        <td>
+
+            E1109021
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / IDC-CO LOCATION
+
+        </td>
+
+        <td>
+
+            9/14/2026 9:08:28 AM
+
+        </td>
+
+        <td>
+
+            1346
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46731324">
+
+                46731324
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Bank Of Ceylon
+
+        </td>
+
+        <td>
+
+            E1120962
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-BIL
+
+        </td>
+
+        <td>
+
+            9/11/2026 2:48:22 PM
+
+        </td>
+
+        <td>
+
+            1413
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46731327">
+
+                46731327
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Nations Trust Bank PLC
+
+        </td>
+
+        <td>
+
+            E1121841
+
+        </td>
+
+        <td>
+
+            R-HK / HK / D-BIL
+
+        </td>
+
+        <td>
+
+            9/11/2026 2:48:19 PM
+
+        </td>
+
+        <td>
+
+            1413
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46725064">
+
+                46725064
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            HIRDARAMANI INTERNATIONAL EXPORTS PVT LTD
+
+        </td>
+
+        <td>
+
+            MS13160
+
+        </td>
+
+        <td>
+
+            R-NG / KN / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/10/2026 12:08:08 PM
+
+        </td>
+
+        <td>
+
+            1439
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46721118">
+
+                46721118
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            LITRO GAS LANKA LIMITED
+
+        </td>
+
+        <td>
+
+            MS13909
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/9/2026 3:46:23 PM
+
+        </td>
+
+        <td>
+
+            1460
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46718490">
+
+                46718490
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            SMB Finance PLC
+
+        </td>
+
+        <td>
+
+            E1104533
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / IDC-VIRTUAL HOSTING
+
+        </td>
+
+        <td>
+
+            9/9/2026 9:46:22 AM
+
+        </td>
+
+        <td>
+
+            1466
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46715295">
+
+                46715295
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            LOLC Finance PLC
+
+        </td>
+
+        <td>
+
+            MS22861
+
+        </td>
+
+        <td>
+
+            R-MD / MD / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/8/2026 2:08:18 PM
+
+        </td>
+
+        <td>
+
+            1485
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46711189">
+
+                46711189
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            John Keells Information Technology  (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1100277
+
+        </td>
+
+        <td>
+
+            R-MD / SI / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/7/2026 6:17:04 PM
+
+        </td>
+
+        <td>
+
+            1505
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46710155">
+
+                46710155
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            Lanka Tiles Plc
+
+        </td>
+
+        <td>
+
+            D59884
+
+        </td>
+
+        <td>
+
+            R-MH / MH / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/7/2026 3:02:26 PM
+
+        </td>
+
+        <td>
+
+            1508
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46706346">
+
+                46706346
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D66736
+
+        </td>
+
+        <td>
+
+            R-KX / AN / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/7/2026 5:12:47 AM
+
+        </td>
+
+        <td>
+
+            1518
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46697926">
+
+                46697926
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            National Development Bank Plc
+
+        </td>
+
+        <td>
+
+            D79649
+
+        </td>
+
+        <td>
+
+            R-HO / AW / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/5/2026 8:07:03 AM
+
+        </td>
+
+        <td>
+
+            1563
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-DATA
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46695138">
+
+                46695138
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Management &amp; General Investment Combine (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            D67750
+
+        </td>
+
+        <td>
+
+            R-GL / GL / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            9/4/2026 1:09:54 PM
+
+        </td>
+
+        <td>
+
+            1582
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                    24 x7 ( 4 HRS ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46690661">
+
+                46690661
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Nations Trust Bank PLC
+
+        </td>
+
+        <td>
+
+            E1115890
+
+        </td>
+
+        <td>
+
+            R-MD / SI / D-BIL
+
+        </td>
+
+        <td>
+
+            9/3/2026 2:57:37 PM
+
+        </td>
+
+        <td>
+
+            1605
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46689510">
+
+                46689510
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Lolc Holdings Plc
+
+        </td>
+
+        <td>
+
+            D57898
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            9/3/2026 12:05:38 PM
+
+        </td>
+
+        <td>
+
+            1607
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46688471">
+
+                46688471
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT ORGANIZATION
+
+        </td>
+
+        <td>
+
+            PRISONS DEPARTMENT
+
+        </td>
+
+        <td>
+
+            MS15245
+
+        </td>
+
+        <td>
+
+            R-MD / MD / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            9/3/2026 10:10:23 AM
+
+        </td>
+
+        <td>
+
+            1609
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46685972">
+
+                46685972
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Sampath Bank Plc
+
+        </td>
+
+        <td>
+
+            E1117021
+
+        </td>
+
+        <td>
+
+            R-KX / KDL / D-EDL
+
+        </td>
+
+        <td>
+
+            9/2/2026 4:57:16 PM
+
+        </td>
+
+        <td>
+
+            1627
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46685546">
+
+                46685546
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Dfcc Bank Plc
+
+        </td>
+
+        <td>
+
+            E1123086(N)
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / SDW-SITE
+
+        </td>
+
+        <td>
+
+            9/2/2026 3:35:45 PM
+
+        </td>
+
+        <td>
+
+            1628
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46674046">
+
+                46674046
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Dfcc Bank Plc
+
+        </td>
+
+        <td>
+
+            E1112645
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / SDW-SITE
+
+        </td>
+
+        <td>
+
+            8/31/2026 4:53:39 PM
+
+        </td>
+
+        <td>
+
+            1675
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46672468">
+
+                46672468
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Lift Holding (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            MS21319
+
+        </td>
+
+        <td>
+
+            R-KX / WI / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            8/31/2026 1:07:13 PM
+
+        </td>
+
+        <td>
+
+            1678
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46659571">
+
+                46659571
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Cargills Restaurants (Private) Limited
+
+        </td>
+
+        <td>
+
+            E1119935
+
+        </td>
+
+        <td>
+
+            R-KX / KDL / D-BIL
+
+        </td>
+
+        <td>
+
+            8/28/2026 2:53:05 PM
+
+        </td>
+
+        <td>
+
+            1749
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46659554">
+
+                46659554
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Cargills Retail (Private) Limited
+
+        </td>
+
+        <td>
+
+            E1118900
+
+        </td>
+
+        <td>
+
+            R-KX / KDL / D-BIL
+
+        </td>
+
+        <td>
+
+            8/28/2026 2:50:19 PM
+
+        </td>
+
+        <td>
+
+            1749
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46659531">
+
+                46659531
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Cargills Retail (Private) Limited
+
+        </td>
+
+        <td>
+
+            E1117954
+
+        </td>
+
+        <td>
+
+            R-KX / KX / D-BIL
+
+        </td>
+
+        <td>
+
+            8/28/2026 1:51:54 PM
+
+        </td>
+
+        <td>
+
+            1750
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46656993">
+
+                46656993
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D73247
+
+        </td>
+
+        <td>
+
+            R-WT / WT / D-ETHERNET VPN
+
+        </td>
+
+        <td>
+
+            8/28/2026 9:52:34 AM
+
+        </td>
+
+        <td>
+
+            1754
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46656563">
+
+                46656563
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            M P C Society Ltd Warakapola
+
+        </td>
+
+        <td>
+
+            D50717
+
+        </td>
+
+        <td>
+
+            R-KE / GLG / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            8/28/2026 9:18:14 AM
+
+        </td>
+
+        <td>
+
+            1754
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                    24 x 7 (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            2
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46649300">
+
+                46649300
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            CIC FEEDS (PVT) LTD
+
+        </td>
+
+        <td>
+
+            E1121454
+
+        </td>
+
+        <td>
+
+            R-NG / BDL / D-BIL
+
+        </td>
+
+        <td>
+
+            8/26/2026 9:54:27 AM
+
+        </td>
+
+        <td>
+
+            1802
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            3
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46639221">
+
+                46639221
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Commercial Bank Of Ceylon PLC
+
+        </td>
+
+        <td>
+
+            D86804
+
+        </td>
+
+        <td>
+
+            R-WT / WT / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            8/24/2026 11:08:25 AM
+
+        </td>
+
+        <td>
+
+            1848
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46632168">
+
+                46632168
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SOFTLOGIC B P O SERVICES (PVT) LTD
+
+        </td>
+
+        <td>
+
+            MS13625
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / MS-MANAGED FIREWALL
+
+        </td>
+
+        <td>
+
+            8/22/2026 1:58:54 PM
+
+        </td>
+
+        <td>
+
+            1894
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46626580">
+
+                46626580
+
+            </a>
+
+        </td>
+
+        <td>
+
+            ENTERPRISE-LARGE
+
+        </td>
+
+        <td>
+
+            SIYAPATHA FINANCE PLC
+
+        </td>
+
+        <td>
+
+            E1117976
+
+        </td>
+
+        <td>
+
+            R-KX / MAB / SDW-SITE
+
+        </td>
+
+        <td>
+
+            8/21/2026 11:30:28 AM
+
+        </td>
+
+        <td>
+
+            1920
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46618558">
+
+                46618558
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SMALL BUSINESS
+
+        </td>
+
+        <td>
+
+            CEYLON TOBACCO COMPANY PLC
+
+        </td>
+
+        <td>
+
+            D90552
+
+        </td>
+
+        <td>
+
+            R-MRG / BZ / D-BIL
+
+        </td>
+
+        <td>
+
+            8/19/2026 5:24:49 PM
+
+        </td>
+
+        <td>
+
+            1962
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46616140">
+
+                46616140
+
+            </a>
+
+        </td>
+
+        <td>
+
+            INDIVIDUAL-BUSINESS
+
+        </td>
+
+        <td>
+
+            M/S . Pelwatte Dairy Industries Ltd
+
+        </td>
+
+        <td>
+
+            E1105083
+
+        </td>
+
+        <td>
+
+            R-MRG / BZ / D-IP TRUNK LINE
+
+        </td>
+
+        <td>
+
+            8/19/2026 11:01:17 AM
+
+        </td>
+
+        <td>
+
+            1968
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46599972">
+
+                46599972
+
+            </a>
+
+        </td>
+
+        <td>
+
+            REGIONAL-SME
+
+        </td>
+
+        <td>
+
+            Aegis Services Lanka (Pvt) Ltd
+
+        </td>
+
+        <td>
+
+            E1108866
+
+        </td>
+
+        <td>
+
+            R-WT / WT / D-BIL
+
+        </td>
+
+        <td>
+
+            8/16/2026 3:15:03 AM
+
+        </td>
+
+        <td>
+
+            2048
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46592868">
+
+                46592868
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            DR INDUSTRIES (PVT) LTD
+
+        </td>
+
+        <td>
+
+            F36805
+
+        </td>
+
+        <td>
+
+            R-MT / MT / D-VALUE VPN
+
+        </td>
+
+        <td>
+
+            8/14/2026 12:28:45 PM
+
+        </td>
+
+        <td>
+
+            2087
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46582524">
+
+                46582524
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Seylan Bank Plc
+
+        </td>
+
+        <td>
+
+            E1104359
+
+        </td>
+
+        <td>
+
+            R-HO / PK / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            8/12/2026 1:47:39 PM
+
+        </td>
+
+        <td>
+
+            2134
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-NW
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46515304">
+
+                46515304
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-SME
+
+        </td>
+
+        <td>
+
+            DIESEL AND MOTOR ENGINEERING PLC
+
+        </td>
+
+        <td>
+
+            MS16713
+
+        </td>
+
+        <td>
+
+            R-GQ / VR / MS-ICT INFRA
+
+        </td>
+
+        <td>
+
+            7/31/2026 10:56:59 AM
+
+        </td>
+
+        <td>
+
+            2425
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46497312">
+
+                46497312
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Peoples Bank
+
+        </td>
+
+        <td>
+
+            D93478
+
+        </td>
+
+        <td>
+
+            R-RN / BG / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            7/27/2026 3:02:08 PM
+
+        </td>
+
+        <td>
+
+            2516
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46484111">
+
+                46484111
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Cargills Retail (Private) Limited
+
+        </td>
+
+        <td>
+
+            D91523
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            7/24/2026 2:53:11 PM
+
+        </td>
+
+        <td>
+
+            2589
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46481370">
+
+                46481370
+
+            </a>
+
+        </td>
+
+        <td>
+
+            CORPORATE-LARGE &amp; VERY LARGE
+
+        </td>
+
+        <td>
+
+            Cargills Retail (Private) Limited
+
+        </td>
+
+        <td>
+
+            E1119765(N)
+
+        </td>
+
+        <td>
+
+            R-MD / CEN / SDW-SITE
+
+        </td>
+
+        <td>
+
+            7/24/2026 8:20:49 AM
+
+        </td>
+
+        <td>
+
+            2595
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-success">
+
+                     (  ) 
+
+                </span>
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46481300">
+
+                46481300
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Peoples Bank
+
+        </td>
+
+        <td>
+
+            D94875
+
+        </td>
+
+        <td>
+
+            R-KY / KS / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            7/24/2026 8:02:21 AM
+
+        </td>
+
+        <td>
+
+            2595
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46459983">
+
+                46459983
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            National Savings Bank (Wan)
+
+        </td>
+
+        <td>
+
+            D56063
+
+        </td>
+
+        <td>
+
+            R-MH / MWK / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            7/20/2026 7:38:13 AM
+
+        </td>
+
+        <td>
+
+            2692
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46365362">
+
+                46365362
+
+            </a>
+
+        </td>
+
+        <td>
+
+            SLT-OFFICE
+
+        </td>
+
+        <td>
+
+            Sri Lanka Telecom (Wt)
+
+        </td>
+
+        <td>
+
+            D70780
+
+        </td>
+
+        <td>
+
+            R-WT / WT / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            7/1/2026 4:23:01 PM
+
+        </td>
+
+        <td>
+
+            3139
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            COPPER
+
+        </td>
+
+        <td>
+
+            1
+
+        </td>
+
+        <td>
+
+            CEN-CSC-CC
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46241243">
+
+                46241243
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Secretary, Ministry 0f Health,Nutrition &amp; Welfare
+
+        </td>
+
+        <td>
+
+            D90779
+
+        </td>
+
+        <td>
+
+            R-GL / GL / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            6/9/2026 3:16:11 PM
+
+        </td>
+
+        <td>
+
+            3668
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46209099">
+
+                46209099
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Secretary, Ministry 0f Health,Nutrition &amp; Welfare
+
+        </td>
+
+        <td>
+
+            D91744
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            6/4/2026 12:59:30 PM
+
+        </td>
+
+        <td>
+
+            3791
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            GPON
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+
+            <a href="/FaultDetails/Details/46203394">
+
+                46203394
+
+            </a>
+
+        </td>
+
+        <td>
+
+            GOVERNMENT OFFICIAL
+
+        </td>
+
+        <td>
+
+            Lady Ridgeway Hospital
+
+        </td>
+
+        <td>
+
+            D89185
+
+        </td>
+
+        <td>
+
+            R-MD / MD / D-PREMIUM IPVPN
+
+        </td>
+
+        <td>
+
+            6/3/2026 2:01:27 PM
+
+        </td>
+
+        <td>
+
+            3813
+
+        </td>
+
+        <td>
+
+                <span class="badge bg-danger">
+
+                    SLA Exceeded
+
+                </span>
+
+        </td>
+
+        <td>
+
+            FIBER
+
+        </td>
+
+        <td>
+
+            0
+
+        </td>
+
+        <td>
+
+            CEN-CSC-MS
+
+        </td>
+
+    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SUMMARY TABLE MODAL -->
+<div class="modal fade" id="summaryTableModal" tabindex="-1" aria-labelledby="summaryTableModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+
+            <div class="modal-header text-white" style="background: linear-gradient(135deg, #0f3d75, #1565c0); padding: 20px 25px;">
+                <div>
+                    <h5 class="modal-title fw-bold" id="summaryTableModalLabel">
+                        <i class="fas fa-table me-2"></i> Summary Table (Fault Duration & Work Group)
+                    </h5>
+                    <small class="text-white-50">Real-time breakdown based on age (fault duration) & Work Group</small>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-4" style="background: #f8fafc;">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold m-0 text-dark">
+                        <i class="fas fa-list-check text-primary me-2"></i> Summary table based on age (fault duration) & WG
+                    </h6>
+                </div>
+
+                <div class="table-responsive rounded-3 shadow-sm mb-4">
+                    <table class="table table-bordered table-hover mb-0 text-center align-middle bg-white">
+                        <thead class="text-white" style="background: linear-gradient(135deg, #0f4c81, #1976d2);">
+                            <tr>
+                                <th class="text-start ps-3">Work Group</th>
+                                <th>&lt;4 Hours</th>
+                                <th>4 to 24Hours</th>
+                                <th>24hour to 72hours</th>
+                                <th>&gt;3 days</th>
+                                <th class="bg-dark text-white">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-DATA</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>27</td>
+                                    <td class="fw-bold bg-light text-primary">27</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-NW</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>82</td>
+                                    <td class="fw-bold bg-light text-primary">82</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-CC</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>17</td>
+                                    <td class="fw-bold bg-light text-primary">17</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start ps-3 fw-bold text-dark">CEN-CSC-MS</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>11</td>
+                                    <td class="fw-bold bg-light text-primary">11</td>
+                                </tr>
+                        </tbody>
+                        <tfoot class="fw-bold bg-light border-top">
+                            <tr>
+                                <td class="text-start ps-3 text-uppercase font-weight-bold">Total</td>
+                                <td class="text-primary fs-6">0</td>
+                                <td class="text-primary fs-6">0</td>
+                                <td class="text-primary fs-6">0</td>
+                                <td class="text-primary fs-6">137</td>
+                                <td class="text-white bg-primary fs-6">137</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100 border-start border-danger border-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-dark fs-6">Zero WO Count</span>
+                                </div>
+                                <span class="badge bg-danger rounded-pill px-3 py-2 fs-6">19</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm p-3 rounded-3 bg-white h-100 border-start border-warning border-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="fw-bold text-dark fs-6">One WO without HQ Team Count</span>
+                                </div>
+                                <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fs-6">75</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer bg-light border-0">
+                <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</main>
+
+            <footer b-z23fy4zdhm class="border-top bg-white">
+                <div b-z23fy4zdhm class="container py-3 d-flex justify-content-between align-items-center">
+                    <span b-z23fy4zdhm class="text-muted small">&copy; 2026 - AlarmSystem</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.appApiBase = '/api';
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+                window.location.reload();
+            }
+        });
+    </script>
+    <script src="/js/site.js?v=UaRoscdjdIu4a9ODZAPyVfPowkHQ7K5P0cMQb2LqfCY"></script>
+
+
+    
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const input = document.getElementById("searchInput");
+
+    const table = document.getElementById("faultTable");
+
+    if(!input || !table)
+        return;
+
+    input.addEventListener("keyup", function(){
+
+        const value = this.value.toLowerCase();
+
+        const rows = table.getElementsByTagName("tr");
+
+        for(let i=0;i<rows.length;i++){
+
+            rows[i].style.display =
+                rows[i].innerText.toLowerCase().includes(value)
+                    ? ""
+                    : "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
